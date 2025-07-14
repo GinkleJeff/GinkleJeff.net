@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <title>GinkleJeff's SuperSite</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            background: linear-gradient(135deg, #0f0f0f, #1a1a1a, #000000);
+            font-family: 'Orbitron', sans-serif;
+            overflow: hidden;
+            color: #ff4500;
+        }
+
+        /* === Neon Scrollbar === */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #00fff7;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00fff7;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #ff4500;
+                box-shadow: 0 0 10px #ff4500;
+            }
+
+        .glitch-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, #1f1f1f 0px, #1f1f1f 2px, #0f0f0f 2px, #0f0f0f 4px);
+            animation: bgGlitch 0.5s infinite;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        @keyframes bgGlitch {
+            0% {
+                transform: translateY(0);
+            }
+
+            25% {
+                transform: translateY(-1px);
+            }
+
+            50% {
+                transform: translateY(2px);
+            }
+
+            75% {
+                transform: translateY(-1px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            z-index: 1;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: stretch;
+            text-align: left;
+            padding: 2rem;
+            padding-bottom: 100px;
+            gap: 2rem;
+            overflow: hidden;
+        }
+
+        .left-panel {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+
+        .right-panel {
+            flex: 0 0 400px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #ff4500;
+            text-shadow: 0 0 15px #ff4500;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+
+            h1:hover {
+                color: #00fff7;
+                text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+            }
+
+        iframe {
+            border-radius: 12px;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 20px #00fff7;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.4rem;
+            color: #00fff7;
+            text-shadow: 0 0 8px #00fff7;
+            animation: wiggleText 2s infinite;
+        }
+
+        p {
+            font-size: 1rem;
+            margin: 0.4rem 0 1rem 0;
+            line-height: 1.3;
+        }
+
+        @keyframes wiggleText {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(0.5deg);
+            }
+
+            50% {
+                transform: rotate(-0.5deg);
+            }
+
+            75% {
+                transform: rotate(0.25deg);
+            }
+        }
+
+        .button-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            z-index: 999;
+            box-shadow: 0 -2px 10px #ff4500;
+            gap: 15px;
+        }
+
+            .button-bar a {
+                padding: 12px 24px;
+                color: black;
+                background: #00fff7;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1rem;
+                border-radius: 7px;
+                transition: 0.2s;
+                box-shadow: 0 0 10px #00fff7;
+                display: inline-block;
+                user-select: none;
+            }
+
+                .button-bar a:hover {
+                    background: #ff4500;
+                    color: white;
+                    box-shadow: 0 0 20px #ff4500;
+                }
+    </style>
+</head>
+<body>
+    <div class="glitch-bg"></div>
+    <div class="container">
+        <div class="left-panel">
+            <h1 id="glitch-title">GINKLEJEFF</h1>
+
+            <h2>Bio</h2>
+            <p>
+                I'm GinkleJeff, an indie game developer/programmer/artist specializing in strategic skillful gameplay and chaotic experiences with a focus on movement. I primarily work in Godot/GDScript, but I make browser games in HTML/CSS/JavaScript as well. Expect kinetic gameplay, glowing visuals, and systems that feed off of skill and momentum. When I'm not making games, I'm eating copious amounts of oranges or making horribly designed missiles in Gmod.
+            </p>
+
+            <h2>Bloodbath</h2>
+            <p>
+                A first person hack-and-slash game being developed in Godot. You play as Vandred, a lab-grown superhuman mercilessly tearing down demons in a 14 year old's imagination of hell. The combat is fast and frantic; parrying gives back health, and the Bloodblade levels up by absorbing enemy abilities. Think Ultrakill but with Devil May Cry mixed in with some Binding of Isaac or Dead Cells but without roguelike elements—oh, and your lab clone/rival/brother is actively trying to take your arm off.
+            </p>
+
+            <h2>Chaos Cathedral</h2>
+            <p>
+                A 2D arena roguelike based on ridiculous weaponry, divine decadence and cartoon violence. Choose from a gaggle of weirdos and bless yourself in a holy arena filled with bullet hell bosses and senseless sacrilege. Made in Godot. Explosions are mandatory.
+            </p>
+
+            <h2>HyperCube</h2>
+            <p>
+                A Javascript browser game located at <a href="https://ginklejeff.github.io/HyperCube" target="_blank" style="color:#00fff7; text-decoration: underline;">ginklejeff.github.io/HyperCube</a>. You are a cyan-glowing cube who murders enemies by SLAMMING into everyone with speed. It's all about combos, precision matters, and everything glows like an overexposed Frankenstein monitor during a synthwave mixtape.
+            </p>
+        </div>
+
+        <div class="right-panel">
+            <iframe data-testid="embed-iframe" style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/7mCwUdctNvITTq3l1nsECg?utm_source=generator"
+                width="100%" height="100%" frameborder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+            </iframe>
+        </div>
+    </div>
+
+    <div class="button-bar">
+        <a href="https://github.com/GinkleJeff" target="_blank">GitHub</a>
+        <a href="https://www.youtube.com/@GinkleJeff" target="_blank">YouTube</a>
+        <a href="#" id="contact-button">Contact</a>
+        <a href="https://ginklejeff.github.io/HyperCube" target="_blank">HyperCube</a>
+    </div>
+
+    <script>
+        // EMAIL REVEAL ON CLICK
+        const contactBtn = document.getElementById('contact-button');
+        contactBtn.addEventListener('click', function () {
+            contactBtn.innerText = "ginklejeff@gmail.com";
+            contactBtn.style.background = "#ff4500";
+            contactBtn.style.color = "white";
+            contactBtn.style.boxShadow = "0 0 20px #ff4500";
+        });
+
+        // GLITCH EASTER EGG ON TITLE CLICK
+        const title = document.getElementById('glitch-title');
+        title.addEventListener('click', () => {
+            alert("YOU HAVE AWAKENED THE GLITCH CAT.\nNow all your scrollbars are cursed with oranges.");
+        });
+    </script>
+</body>
+</html>
+
