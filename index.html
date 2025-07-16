@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="favicon.png" />
     <title>GinkleJeff's SuperSite</title>
+    <link rel="icon" href="favicon.png" type="image/png" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
 
@@ -15,62 +15,40 @@
 
         html, body {
             height: 100%;
-            background: linear-gradient(135deg, #0f0f0f, #1a1a1a, #000000);
+            background: url('vaporwave.gif') no-repeat center center fixed;
+            background-size: cover;
             font-family: 'Orbitron', sans-serif;
             overflow: hidden;
             color: #ff4500;
+            position: relative;
         }
 
-        /* === Neon Scrollbar === */
+        /* Overlay for readability */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.5);
+            z-index: 0;
+        }
+
+        /* Scrollbar glow-up */
         ::-webkit-scrollbar {
             width: 8px;
         }
-
         ::-webkit-scrollbar-track {
             background: transparent;
         }
-
         ::-webkit-scrollbar-thumb {
             background: #00fff7;
             border-radius: 10px;
             box-shadow: 0 0 10px #00fff7;
         }
-
-            ::-webkit-scrollbar-thumb:hover {
-                background: #ff4500;
-                box-shadow: 0 0 10px #ff4500;
-            }
-
-        .glitch-bg {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(0deg, #1f1f1f 0px, #1f1f1f 2px, #0f0f0f 2px, #0f0f0f 4px);
-            animation: bgGlitch 0.5s infinite;
-            opacity: 0.2;
-            z-index: 0;
-        }
-
-        @keyframes bgGlitch {
-            0% {
-                transform: translateY(0);
-            }
-
-            25% {
-                transform: translateY(-1px);
-            }
-
-            50% {
-                transform: translateY(2px);
-            }
-
-            75% {
-                transform: translateY(-1px);
-            }
-
-            100% {
-                transform: translateY(0);
-            }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff4500;
+            box-shadow: 0 0 10px #ff4500;
         }
 
         .container {
@@ -111,16 +89,9 @@
             cursor: pointer;
         }
 
-            h1:hover {
-                color: #00fff7;
-                text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
-            }
-
-        iframe {
-            border-radius: 12px;
-            width: 100%;
-            height: 100%;
-            box-shadow: 0 0 20px #00fff7;
+        h1:hover {
+            color: #00fff7;
+            text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
         }
 
         h2 {
@@ -139,21 +110,17 @@
         }
 
         @keyframes wiggleText {
-            0%, 100% {
-                transform: rotate(0deg);
-            }
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(0.5deg); }
+            50% { transform: rotate(-0.5deg); }
+            75% { transform: rotate(0.25deg); }
+        }
 
-            25% {
-                transform: rotate(0.5deg);
-            }
-
-            50% {
-                transform: rotate(-0.5deg);
-            }
-
-            75% {
-                transform: rotate(0.25deg);
-            }
+        iframe {
+            border-radius: 12px;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 20px #00fff7;
         }
 
         .button-bar {
@@ -171,29 +138,30 @@
             gap: 15px;
         }
 
-            .button-bar a {
-                padding: 12px 24px;
-                color: black;
-                background: #00fff7;
-                text-decoration: none;
-                font-weight: bold;
-                font-size: 1rem;
-                border-radius: 7px;
-                transition: 0.2s;
-                box-shadow: 0 0 10px #00fff7;
-                display: inline-block;
-                user-select: none;
-            }
+        .button-bar a {
+            padding: 12px 24px;
+            color: black;
+            background: #00fff7;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 7px;
+            transition: 0.2s;
+            box-shadow: 0 0 10px #00fff7;
+            display: inline-block;
+            user-select: none;
+        }
 
-                .button-bar a:hover {
-                    background: #ff4500;
-                    color: white;
-                    box-shadow: 0 0 20px #ff4500;
-                }
+        .button-bar a:hover {
+            background: #ff4500;
+            color: white;
+            box-shadow: 0 0 20px #ff4500;
+        }
     </style>
 </head>
 <body>
-    <div class="glitch-bg"></div>
+    <div class="overlay"></div>
+
     <div class="container">
         <div class="left-panel">
             <h1 id="glitch-title">GINKLEJEFF</h1>
@@ -236,7 +204,7 @@
     </div>
 
     <script>
-        // EMAIL REVEAL ON CLICK
+        // Show email on click
         const contactBtn = document.getElementById('contact-button');
         contactBtn.addEventListener('click', function () {
             contactBtn.innerText = "ginklejeff@gmail.com";
@@ -245,12 +213,11 @@
             contactBtn.style.boxShadow = "0 0 20px #ff4500";
         });
 
-        // GLITCH EASTER EGG ON TITLE CLICK
+        // Title Easter Egg
         const title = document.getElementById('glitch-title');
         title.addEventListener('click', () => {
-            alert("whats goodie in the hoodie my guy");
+            alert("YOU HAVE AWAKENED THE GLITCH CAT.\nNow all your scrollbars are cursed with oranges.");
         });
     </script>
 </body>
 </html>
-
