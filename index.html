@@ -19,7 +19,7 @@
             background-size: cover;
             font-family: 'Orbitron', sans-serif;
             overflow: hidden;
-            color: #c780ff; /* Body text is light purple */
+            color: #c780ff; /* body text = light purple */
             position: relative;
         }
 
@@ -36,14 +36,17 @@
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: transparent;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #ff71ce;
             border-radius: 10px;
             box-shadow: 0 0 10px #ff71ce;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #fff685;
             box-shadow: 0 0 10px #fff685;
@@ -80,15 +83,15 @@
 
         h1 {
             font-size: 4rem;
-            color: #ff4500;
-            text-shadow: 0 0 15px #ff4500;
+            color: #ff71ce; /* hot pink */
+            text-shadow: 0 0 15px #ff71ce;
             transition: all 0.3s ease;
             margin-bottom: 1rem;
             cursor: pointer;
         }
 
         h1:hover {
-            color: #01cdfe;
+            color: #01cdfe; /* cyan hover */
             text-shadow: 0 0 10px #01cdfe, 0 0 20px #01cdfe;
         }
 
@@ -96,7 +99,7 @@
             font-size: 1.5rem;
             margin-top: 1.5rem;
             margin-bottom: 0.4rem;
-            color: #fff685; /* Pastel yellow titles */
+            color: #fff685;
             text-shadow: 0 0 8px #fff685;
             animation: wiggleText 2s infinite;
         }
@@ -118,7 +121,7 @@
             border-radius: 12px;
             width: 100%;
             height: 100%;
-            box-shadow: 0 0 20px #c780ff;
+            box-shadow: 0 0 20px #ff4500; /* red glow for Spotify */
         }
 
         .button-bar {
@@ -138,23 +141,52 @@
 
         .button-bar a {
             padding: 12px 24px;
-            color: black;
-            background: #ff71ce;
             text-decoration: none;
             font-weight: bold;
             font-size: 1rem;
             border-radius: 7px;
             transition: 0.2s;
-            box-shadow: 0 0 10px #ff71ce;
             display: inline-block;
             user-select: none;
         }
 
-        .button-bar a:hover {
-            background: #fff685;
-            color: #2d1b4e;
-            box-shadow: 0 0 20px #fff685;
+        /* GitHub button */
+        .button-bar a.github {
+            background: #555;
+            color: black;
+            box-shadow: 0 0 10px #555;
         }
+
+        .button-bar a.github:hover {
+            background: #777;
+            box-shadow: 0 0 15px #777;
+        }
+
+        /* YouTube button */
+        .button-bar a.youtube {
+            background: #ff0000;
+            color: white;
+            box-shadow: 0 0 10px #ff0000;
+        }
+
+        .button-bar a.youtube:hover {
+            background: #cc0000;
+            box-shadow: 0 0 15px #cc0000;
+        }
+
+        /* HyperCube button (the only cyan one) */
+        .button-bar a.hypercube {
+            background: #01cdfe;
+            color: white;
+            box-shadow: 0 0 12px #01cdfe;
+        }
+
+        .button-bar a.hypercube:hover {
+            background: #00b4e6;
+            box-shadow: 0 0 20px #00b4e6;
+        }
+
+        /* Contact button stays unchanged */
     </style>
 </head>
 <body>
@@ -181,7 +213,7 @@
 
             <h2>HyperCube</h2>
             <p>
-                A Javascript browser game located at <a href="https://ginklejeff.github.io/HyperCube" target="_blank" style="color:#fff685; text-decoration: underline;">ginklejeff.github.io/HyperCube</a>. You are a cyan-glowing cube who murders enemies by SLAMMING into everyone with speed. It's all about combos, precision matters, and everything glows like an overexposed Frankenstein monitor during a synthwave mixtape.
+                A Javascript browser game located at <a href="https://ginklejeff.github.io/HyperCube" target="_blank" style="color:#01cdfe; text-decoration: underline;">ginklejeff.github.io/HyperCube</a>. You are a cyan-glowing cube who murders enemies by SLAMMING into everyone with speed. It's all about combos, precision matters, and everything glows like an overexposed Frankenstein monitor during a synthwave mixtape.
             </p>
         </div>
 
@@ -195,10 +227,10 @@
     </div>
 
     <div class="button-bar">
-        <a href="https://github.com/GinkleJeff" target="_blank">GitHub</a>
-        <a href="https://www.youtube.com/@GinkleJeff" target="_blank">YouTube</a>
+        <a href="https://github.com/GinkleJeff" class="github" target="_blank">GitHub</a>
+        <a href="https://www.youtube.com/@GinkleJeff" class="youtube" target="_blank">YouTube</a>
         <a href="#" id="contact-button">Contact</a>
-        <a href="https://ginklejeff.github.io/HyperCube" target="_blank">HyperCube</a>
+        <a href="https://ginklejeff.github.io/HyperCube" class="hypercube" target="_blank">HyperCube</a>
     </div>
 
     <script>
@@ -214,7 +246,7 @@
         // Title Easter Egg
         const title = document.getElementById('glitch-title');
         title.addEventListener('click', () => {
-            alert("YOU HAVE AWAKENED THE GLITCH CAT.\nNow your scrollbars are soaked in synthwave.");
+            alert("youtube yownloader");
         });
     </script>
 </body>
