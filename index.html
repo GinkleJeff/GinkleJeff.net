@@ -19,7 +19,7 @@
             background-size: cover;
             font-family: 'Orbitron', sans-serif;
             overflow: hidden;
-            color: #c780ff; /* body text = light purple */
+            color: #ff9bd8; /* body text = light hot pink */
             position: relative;
         }
 
@@ -83,45 +83,37 @@
 
         h1 {
             font-size: 4rem;
-            color: #ff71ce; /* hot pink */
-            text-shadow: 0 0 15px #ff71ce;
+            color: #ff4500;
+            text-shadow: 0 0 15px #ff4500;
             transition: all 0.3s ease;
             margin-bottom: 1rem;
             cursor: pointer;
         }
 
         h1:hover {
-            color: #01cdfe; /* cyan hover */
-            text-shadow: 0 0 10px #01cdfe, 0 0 20px #01cdfe;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
         }
 
         h2 {
             font-size: 1.5rem;
             margin-top: 1.5rem;
             margin-bottom: 0.4rem;
-            color: #fff685;
-            text-shadow: 0 0 8px #fff685;
-            animation: wiggleText 2s infinite;
+            color: #00ffff;
+            text-shadow: 0 0 8px #00ffff;
         }
 
-        p {
+        p, a {
             font-size: 1rem;
             margin: 0.4rem 0 1rem 0;
             line-height: 1.3;
-        }
-
-        @keyframes wiggleText {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(0.5deg); }
-            50% { transform: rotate(-0.5deg); }
-            75% { transform: rotate(0.25deg); }
         }
 
         iframe {
             border-radius: 12px;
             width: 100%;
             height: 100%;
-            box-shadow: 0 0 20px #ff4500; /* red glow for Spotify */
+            box-shadow: 0 0 20px #ff4500;
         }
 
         .button-bar {
@@ -150,7 +142,6 @@
             user-select: none;
         }
 
-        /* GitHub button */
         .button-bar a.github {
             background: #555;
             color: black;
@@ -162,7 +153,6 @@
             box-shadow: 0 0 15px #777;
         }
 
-        /* YouTube button */
         .button-bar a.youtube {
             background: #ff0000;
             color: white;
@@ -174,7 +164,6 @@
             box-shadow: 0 0 15px #cc0000;
         }
 
-        /* HyperCube button (the only cyan one) */
         .button-bar a.hypercube {
             background: #01cdfe;
             color: white;
@@ -186,7 +175,17 @@
             box-shadow: 0 0 20px #00b4e6;
         }
 
-        /* Contact button stays unchanged */
+        .button-bar a#contact-button {
+            background: #ff1493; /* HOT pink */
+            color: white;
+            box-shadow: 0 0 12px #ff1493;
+        }
+
+        .button-bar a#contact-button.clicked {
+            background: #c780ff; /* light purple */
+            color: black;
+            box-shadow: 0 0 20px #c780ff;
+        }
     </style>
 </head>
 <body>
@@ -234,16 +233,12 @@
     </div>
 
     <script>
-        // Show email on click
         const contactBtn = document.getElementById('contact-button');
         contactBtn.addEventListener('click', function () {
             contactBtn.innerText = "ginklejeff@gmail.com";
-            contactBtn.style.background = "#fff685";
-            contactBtn.style.color = "#2d1b4e";
-            contactBtn.style.boxShadow = "0 0 20px #fff685";
+            contactBtn.classList.add("clicked");
         });
 
-        // Title Easter Egg
         const title = document.getElementById('glitch-title');
         title.addEventListener('click', () => {
             alert("youtube yownloader");
