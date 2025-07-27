@@ -18,9 +18,9 @@
             background: url('anon-bg.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Share Tech Mono', monospace;
-            overflow: hidden;
             color: #00ff00; /* neon green text */
             text-shadow: 0 0 5px #00ff00;
+            overflow: hidden;
             position: relative;
         }
 
@@ -34,56 +34,71 @@
             z-index: 0;
         }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #0f0;
-            border-radius: 10px;
-        }
-
-        .container {
-            z-index: 1;
-            position: relative;
-            height: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: stretch;
-            text-align: left;
-            padding: 2rem;
-            padding-bottom: 100px;
-            gap: 2rem;
-            overflow: hidden;
-        }
-
-        .left-panel {
-            flex: 1;
-            overflow-y: auto;
-            padding-right: 1rem;
-        }
-
-        .right-panel {
-            flex: 0 0 400px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        h1 {
+        /* Glitching Title */
+        #glitch-title {
             font-size: 4rem;
             color: #0f0;
-            text-shadow: 0 0 15px #0f0, 0 0 30px #0f0;
+            text-shadow: 0 0 5px #0f0, 0 0 20px #0f0;
+            position: relative;
             animation: flicker 2s infinite;
-            margin-bottom: 1rem;
             cursor: pointer;
         }
 
         @keyframes flicker {
             0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
             20%, 24%, 55% { opacity: 0.3; }
+        }
+
+        /* Glitch effect using pseudo-elements */
+        #glitch-title::before,
+        #glitch-title::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            overflow: hidden;
+            clip: rect(0, 900px, 0, 0);
+        }
+
+        #glitch-title::before {
+            left: 2px;
+            text-shadow: -2px 0 red;
+            animation: glitchTop 2s infinite linear alternate-reverse;
+        }
+
+        #glitch-title::after {
+            left: -2px;
+            text-shadow: -2px 0 blue;
+            animation: glitchBottom 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitchTop {
+            0% { clip: rect(0, 9999px, 0, 0); }
+            10% { clip: rect(0, 9999px, 5px, 0); }
+            20% { clip: rect(0, 9999px, 2px, 0); }
+            30% { clip: rect(0, 9999px, 0, 0); }
+            40% { clip: rect(0, 9999px, 8px, 0); }
+            50% { clip: rect(0, 9999px, 2px, 0); }
+            60% { clip: rect(0, 9999px, 0, 0); }
+            70% { clip: rect(0, 9999px, 6px, 0); }
+            80% { clip: rect(0, 9999px, 0, 0); }
+            90% { clip: rect(0, 9999px, 3px, 0); }
+            100% { clip: rect(0, 9999px, 0, 0); }
+        }
+
+        @keyframes glitchBottom {
+            0% { clip: rect(0, 9999px, 0, 0); }
+            10% { clip: rect(3px, 9999px, 8px, 0); }
+            20% { clip: rect(0, 9999px, 5px, 0); }
+            30% { clip: rect(1px, 9999px, 6px, 0); }
+            40% { clip: rect(0, 9999px, 0, 0); }
+            50% { clip: rect(4px, 9999px, 7px, 0); }
+            60% { clip: rect(0, 9999px, 5px, 0); }
+            70% { clip: rect(2px, 9999px, 8px, 0); }
+            80% { clip: rect(0, 9999px, 3px, 0); }
+            90% { clip: rect(1px, 9999px, 6px, 0); }
+            100% { clip: rect(0, 9999px, 0, 0); }
         }
 
         h2 {
@@ -108,11 +123,38 @@
         }
 
         iframe {
-            border-radius: 0;
+            border: 2px solid #0f0;
             width: 100%;
             height: 100%;
-            border: 2px solid #0f0;
             box-shadow: 0 0 10px #0f0;
+        }
+
+        .container {
+            z-index: 1;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: stretch;
+            padding: 2rem;
+            padding-bottom: 100px;
+            gap: 2rem;
+            overflow: hidden;
+        }
+
+        .left-panel {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+
+        .right-panel {
+            flex: 0 0 400px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .button-bar {
@@ -135,7 +177,6 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 1rem;
-            border-radius: 0;
             transition: 0.2s;
             display: inline-block;
             user-select: none;
@@ -155,14 +196,50 @@
             background: #0f0;
             color: black;
         }
+
+        /* Terminal Boot Screen */
+        #boot-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            color: #0f0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            padding: 20px;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        #boot-text {
+            white-space: pre-line;
+        }
+
+        #boot-cursor {
+            display: inline-block;
+            width: 10px;
+            background: #0f0;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
-    <div class="overlay"></div>
+    <div id="boot-screen">
+        <div id="boot-text">Initializing GinkleJeff SuperSite...\n</div>
+        <div id="boot-cursor"></div>
+    </div>
 
+    <div class="overlay"></div>
     <div class="container">
         <div class="left-panel">
-            <h1 id="glitch-title">GINKLEJEFF</h1>
+            <h1 id="glitch-title" data-text="GINKLEJEFF">GINKLEJEFF</h1>
 
             <h2>Bio</h2>
             <p>
@@ -202,17 +279,48 @@
     </div>
 
     <script>
+        // Boot-up fake terminal effect
+        const bootLines = [
+            "ACCESSING SYSTEM FILES...",
+            "ESTABLISHING SECURE CONNECTION...",
+            "LOADING MAINFRAME...",
+            "VERIFYING USER: GINKLEJEFF...",
+            "ACCESS GRANTED.",
+            "WELCOME TO THE SUPER SITE."
+        ];
+
+        const bootText = document.getElementById('boot-text');
+        const bootCursor = document.getElementById('boot-cursor');
+        let lineIndex = 0;
+
+        function typeLine() {
+            if (lineIndex < bootLines.length) {
+                let line = bootLines[lineIndex];
+                let charIndex = 0;
+                let typer = setInterval(() => {
+                    bootText.textContent += line.charAt(charIndex);
+                    charIndex++;
+                    if (charIndex >= line.length) {
+                        clearInterval(typer);
+                        bootText.textContent += "\n";
+                        lineIndex++;
+                        setTimeout(typeLine, 400);
+                    }
+                }, 50);
+            } else {
+                setTimeout(() => {
+                    document.getElementById('boot-screen').style.display = 'none';
+                }, 500);
+            }
+        }
+        typeLine();
+
+        // Contact button
         const contactBtn = document.getElementById('contact-button');
         contactBtn.addEventListener('click', function () {
             contactBtn.innerText = "ginklejeff@gmail.com";
             contactBtn.classList.add("clicked");
         });
-
-        const title = document.getElementById('glitch-title');
-        title.addEventListener('click', () => {
-            alert("WE ARE LEGION.");
-        });
     </script>
 </body>
 </html>
-
