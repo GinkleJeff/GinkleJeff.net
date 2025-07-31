@@ -34,7 +34,6 @@
             z-index: 0;
         }
 
-        /* Fade-in container animation */
         body.loaded .container,
         body.loaded .button-bar {
             opacity: 1;
@@ -48,20 +47,26 @@
             transition: opacity 1s ease, transform 1s ease;
         }
 
-        /* Scrollbar Styling */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
         ::-webkit-scrollbar-thumb {
             background: #00ff00;
             border-radius: 5px;
             box-shadow: 0 0 10px #00ff00;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00cc00;
-            box-shadow: 0 0 15px #00cc00;
-        }
 
-        /* GLITCH TITLE */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #00cc00;
+                box-shadow: 0 0 15px #00cc00;
+            }
+
+        /* Title */
         #glitch-title {
             font-size: 4rem;
             color: #0f0;
@@ -74,22 +79,45 @@
         }
 
         @keyframes titleFade {
-            to { opacity: 1; transform: translateY(0); }
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-            20%, 24%, 55% { opacity: 0.3; }
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                opacity: 1;
+            }
+
+            20%, 24%, 55% {
+                opacity: 0.3;
+            }
         }
 
-        /* Name JIGGLE */
         @keyframes jiggle {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            20% { transform: translate(-2px, 1px) rotate(-1deg); }
-            40% { transform: translate(2px, -2px) rotate(1deg); }
-            60% { transform: translate(-1px, 1px) rotate(0deg); }
-            80% { transform: translate(1px, -1px) rotate(1deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            20% {
+                transform: translate(-2px, 1px) rotate(-1deg);
+            }
+
+            40% {
+                transform: translate(2px, -2px) rotate(1deg);
+            }
+
+            60% {
+                transform: translate(-1px, 1px) rotate(0deg);
+            }
+
+            80% {
+                transform: translate(1px, -1px) rotate(1deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
         }
 
         .glitch-active {
@@ -98,7 +126,6 @@
             text-shadow: 0 0 10px #006400, 0 0 20px #003300;
         }
 
-        /* Headers Animation */
         h2 {
             font-size: 1.5rem;
             margin-top: 1.5rem;
@@ -119,7 +146,6 @@
             }
         }
 
-        /* Paragraphs Type Effect */
         p, a {
             font-size: 1rem;
             margin: 0.4rem 0 1rem 0;
@@ -129,7 +155,9 @@
         }
 
         @keyframes fadeInText {
-            to { opacity: 1; }
+            to {
+                opacity: 1;
+            }
         }
 
         a {
@@ -140,18 +168,24 @@
         iframe {
             border: 2px solid #0f0;
             width: 100%;
-            box-shadow: 0 0 10px #0f0;
             opacity: 0;
             transform: translateY(20px);
             animation: popIn 0.8s forwards;
         }
 
+            iframe[data-testid="embed-iframe"] {
+                box-shadow: none;
+            }
+
         @keyframes popIn {
-            to { opacity: 1; transform: translateY(0); }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .container {
-            z-index: 1;
+            z-index: 2;
             position: relative;
             height: 100%;
             display: flex;
@@ -194,30 +228,30 @@
             border-top: 2px solid #0f0;
         }
 
-        .button-bar a {
-            padding: 10px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: 0.2s;
-            display: inline-block;
-            user-select: none;
-            background: black;
-            color: #0f0;
-            border: 1px solid #0f0;
-            text-shadow: 0 0 5px #0f0;
-        }
+            .button-bar a {
+                padding: 10px 20px;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1rem;
+                transition: 0.2s;
+                display: inline-block;
+                user-select: none;
+                background: black;
+                color: #0f0;
+                border: 1px solid #0f0;
+                text-shadow: 0 0 5px #0f0;
+            }
 
-        .button-bar a:hover {
-            background: #0f0;
-            color: black;
-            box-shadow: 0 0 10px #0f0;
-        }
+                .button-bar a:hover {
+                    background: #0f0;
+                    color: black;
+                    box-shadow: 0 0 10px #0f0;
+                }
 
-        .button-bar a#contact-button.clicked {
-            background: #0f0;
-            color: black;
-        }
+                .button-bar a#contact-button.clicked {
+                    background: #0f0;
+                    color: black;
+                }
 
         /* Terminal Boot Screen */
         #boot-screen {
@@ -229,14 +263,18 @@
             background: black;
             color: #0f0;
             font-family: 'Share Tech Mono', monospace;
-            font-size: 1rem;
+            font-size: 0.8rem;
             padding: 20px;
             z-index: 9999;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
         }
 
         #boot-text {
-            white-space: pre-line;
+            white-space: pre;
         }
 
         #boot-cursor {
@@ -247,16 +285,36 @@
         }
 
         @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
+            0%, 50% {
+                opacity: 1;
+            }
+
+            51%, 100% {
+                opacity: 0;
+            }
+        }
+
+        /* Matrix Rain Overlay */
+        #matrix-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: black;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
     <div id="boot-screen">
-        <div id="boot-text">Initializing GinkleJeff SuperSite...\n</div>
+        <div id="boot-text"></div>
         <div id="boot-cursor"></div>
     </div>
+
+    <canvas id="matrix-overlay"></canvas>
 
     <div class="overlay"></div>
     <div class="container">
@@ -264,11 +322,11 @@
             <h1 id="glitch-title" data-text="GINKLEJEFF">GINKLEJEFF</h1>
 
             <h2>Anonymous Message</h2>
-            <iframe width="100%" height="315" 
-                src="https://www.youtube.com/embed/VT2CjGNjtoM" 
-                title="Anonymous Message to the Media" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            <iframe width="100%" height="315"
+                    src="https://www.youtube.com/embed/VT2CjGNjtoM"
+                    title="Anonymous Message to the Media"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
             </iframe>
             <p style="color:#0f0; text-shadow:0 0 5px #0f0; margin-top:1rem;">
                 We are Anonymous. We are Legion. We do not forgive. We do not forget. Expect us.
@@ -291,20 +349,15 @@
 
             <h2>HyperCube</h2>
             <p>
-                A cyan cube murder simulator: 
-                <a href="https://ginklejeff.github.io/HyperCube" target="_blank">ginklejeff.github.io/HyperCube</a>. 
+                A cyan cube murder simulator:
+                <a href="https://ginklejeff.github.io/HyperCube" target="_blank">ginklejeff.github.io/HyperCube</a>.
                 Smash, combo, glow. Become *the polygonal apex predator*.
             </p>
         </div>
 
         <div class="right-panel">
             <h2>We Are Legion</h2>
-            <iframe data-testid="embed-iframe" 
-                style="border-radius:12px" 
-                src="https://open.spotify.com/embed/playlist/0X2eCw3VbBp03QasUboMm7?utm_source=generator" 
-                width="100%" height="450" frameBorder="0" allowfullscreen="" 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
-            </iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0X2eCw3VbBp03QasUboMm7?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
     </div>
 
@@ -316,21 +369,40 @@
     </div>
 
     <script>
-        // Boot-up fake terminal effect
+        // BOOT-UP SEQUENCE
+        const welcomeArt = `
+    WWWWWWWW                           WWWWWWWW               lllllll
+    W::::::W                           W::::::W               l:::::l
+    W::::::W                           W::::::W               l:::::l
+    W::::::W                           W::::::W               l:::::l
+     W:::::W           WWWWW           W:::::W eeeeeeeeeeee    l::::l     cccccccccccccccc   ooooooooooo      mmmmmmm    mmmmmmm       eeeeeeeeeeee
+      W:::::W         W:::::W         W:::::Wee::::::::::::ee  l::::l   cc:::::::::::::::c oo:::::::::::oo  mm:::::::m  m:::::::mm   ee::::::::::::ee
+       W:::::W       W:::::::W       W:::::We::::::eeeee:::::eel::::l  c:::::::::::::::::co:::::::::::::::om::::::::::mm::::::::::m e::::::eeeee:::::ee
+        W:::::W     W:::::::::W     W:::::We::::::e     e:::::el::::l c:::::::cccccc:::::co:::::ooooo:::::om::::::::::::::::::::::me::::::e     e:::::e
+         W:::::W   W:::::W:::::W   W:::::W e:::::::eeeee::::::el::::l c::::::c     ccccccco::::o     o::::om:::::mmm::::::mmm:::::me:::::::eeeee::::::e
+          W:::::W W:::::W W:::::W W:::::W  e:::::::::::::::::e l::::l c:::::c             o::::o     o::::om::::m   m::::m   m::::me:::::::::::::::::e
+           W:::::W:::::W   W:::::W:::::W   e::::::eeeeeeeeeee  l::::l c:::::c             o::::o     o::::om::::m   m::::m   m::::me::::::eeeeeeeeeee
+            W:::::::::W     W:::::::::W    e:::::::e           l::::l c::::::c     ccccccco::::o     o::::om::::m   m::::m   m::::me:::::::e
+             W:::::::W       W:::::::W     e::::::::e         l::::::lc:::::::cccccc:::::co:::::ooooo:::::om::::m   m::::m   m::::me::::::::e
+              W:::::W         W:::::W       e::::::::eeeeeeee l::::::l c:::::::::::::::::co:::::::::::::::om::::m   m::::m   m::::m e::::::::eeeeeeee
+               W:::W           W:::W         ee:::::::::::::e l::::::l  cc:::::::::::::::c oo:::::::::::oo m::::m   m::::m   m::::m  ee:::::::::::::e
+                WWW             WWW            eeeeeeeeeeeeee llllllll    cccccccccccccccc   ooooooooooo   mmmmmm   mmmmmm   mmmmmm    eeeeeeeeeeeeee`;
+
         const bootLines = [
+            "Initializing GinkleJeff SuperSite...",
             "ESTABLISHING BACKDOOR CONNECTION...",
             "BYPASSING MAINFRAME...",
             "ACCESSING SYSTEM FILES...",
             "VERIFYING USER: GINKLEJEFF...",
-            "ACCESS GRANTED.",
-            "WE ARE ANONYMOUS, WE ARE LEGION, WE DO NOT FORGIVE, AND WE DO NOT FORGET, UNITED BY ONE, DIVIDED BY ZERO."
+            "ACCESS GRANTED."
+	    "WE ARE ANONYMOUS, WE ARE LEGION."
         ];
 
         const bootText = document.getElementById('boot-text');
         const bootCursor = document.getElementById('boot-cursor');
         let lineIndex = 0;
 
-        function typeLine() {
+        function typeLines() {
             if (lineIndex < bootLines.length) {
                 let line = bootLines[lineIndex];
                 let charIndex = 0;
@@ -341,33 +413,46 @@
                         clearInterval(typer);
                         bootText.textContent += "\n";
                         lineIndex++;
-                        setTimeout(typeLine, 400);
+                        setTimeout(typeLines, 400);
                     }
                 }, 50);
             } else {
-                setTimeout(() => {
-                    document.getElementById('boot-screen').style.opacity = '0';
-                    document.body.classList.add('loaded');
-                    setTimeout(() => {
-                        document.getElementById('boot-screen').style.display = 'none';
-                    }, 800);
-                }, 500);
+                setTimeout(typeWelcome, 500);
             }
         }
-        typeLine();
 
-        // Contact button
+        function typeWelcome() {
+            let line = welcomeArt;
+            let charIndex = 0;
+            let typer = setInterval(() => {
+                bootText.textContent += line.charAt(charIndex);
+                charIndex++;
+                if (charIndex >= line.length) {
+                    clearInterval(typer);
+                    setTimeout(() => {
+                        document.getElementById('boot-screen').style.opacity = '0';
+                        document.body.classList.add('loaded');
+                        setTimeout(() => {
+                            document.getElementById('boot-screen').style.display = 'none';
+                        }, 800);
+                    }, 200);
+                }
+            }, 0.1);
+        }
+
+        typeLines();
+
+        // CONTACT BUTTON
         const contactBtn = document.getElementById('contact-button');
         contactBtn.addEventListener('click', function () {
             contactBtn.innerText = "ginklejeff@gmail.com";
             contactBtn.classList.add("clicked");
         });
 
-        // Glitch cycle every 45 seconds
+        // GLITCH TITLE
         const title = document.getElementById('glitch-title');
         const originalText = "GINKLEJEFF";
         const glitchText = "G!nkl@J3ff";
-
         function triggerGlitch() {
             title.textContent = glitchText;
             title.classList.add('glitch-active');
@@ -377,6 +462,33 @@
             }, 3000);
         }
         setInterval(triggerGlitch, 45000);
+
+        // MATRIX RAIN
+        const matrixCanvas = document.getElementById('matrix-overlay');
+        const ctx = matrixCanvas.getContext('2d');
+        function resizeCanvas() {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
+        let drops = [];
+        function startMatrix() {
+            ctx.fillStyle = "rgba(0,0,0,0.05)";
+            ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+            ctx.fillStyle = "#0F0";
+            ctx.font = "15px monospace";
+            for (let i = 0; i < drops.length; i++) {
+                let text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * 15, drops[i] * 15);
+                if (drops[i] * 15 > matrixCanvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        for (let x = 0; x < Math.ceil(window.innerWidth / 15); x++) drops[x] = 1;
+        matrixCanvas.classList.add('active');
+        setInterval(startMatrix, 50);
     </script>
 </body>
 </html>
