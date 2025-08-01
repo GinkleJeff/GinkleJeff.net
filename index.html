@@ -61,12 +61,11 @@
             box-shadow: 0 0 10px #00ff00;
         }
 
-            ::-webkit-scrollbar-thumb:hover {
-                background: #00cc00;
-                box-shadow: 0 0 15px #00cc00;
-            }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00cc00;
+            box-shadow: 0 0 15px #00cc00;
+        }
 
-        /* Title */
         #glitch-title {
             font-size: 4rem;
             color: #0f0;
@@ -88,36 +87,18 @@
             0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
                 opacity: 1;
             }
-
             20%, 24%, 55% {
                 opacity: 0.3;
             }
         }
 
         @keyframes jiggle {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-
-            20% {
-                transform: translate(-2px, 1px) rotate(-1deg);
-            }
-
-            40% {
-                transform: translate(2px, -2px) rotate(1deg);
-            }
-
-            60% {
-                transform: translate(-1px, 1px) rotate(0deg);
-            }
-
-            80% {
-                transform: translate(1px, -1px) rotate(1deg);
-            }
-
-            100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
+            0% { transform: translate(0, 0) rotate(0deg); }
+            20% { transform: translate(-2px, 1px) rotate(-1deg); }
+            40% { transform: translate(2px, -2px) rotate(1deg); }
+            60% { transform: translate(-1px, 1px) rotate(0deg); }
+            80% { transform: translate(1px, -1px) rotate(1deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
         }
 
         .glitch-active {
@@ -173,9 +154,9 @@
             animation: popIn 0.8s forwards;
         }
 
-            iframe[data-testid="embed-iframe"] {
-                box-shadow: none;
-            }
+        iframe[data-testid="embed-iframe"] {
+            box-shadow: none;
+        }
 
         @keyframes popIn {
             to {
@@ -228,32 +209,31 @@
             border-top: 2px solid #0f0;
         }
 
-            .button-bar a {
-                padding: 10px 20px;
-                text-decoration: none;
-                font-weight: bold;
-                font-size: 1rem;
-                transition: 0.2s;
-                display: inline-block;
-                user-select: none;
-                background: black;
-                color: #0f0;
-                border: 1px solid #0f0;
-                text-shadow: 0 0 5px #0f0;
-            }
+        .button-bar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: 0.2s;
+            display: inline-block;
+            user-select: none;
+            background: black;
+            color: #0f0;
+            border: 1px solid #0f0;
+            text-shadow: 0 0 5px #0f0;
+        }
 
-                .button-bar a:hover {
-                    background: #0f0;
-                    color: black;
-                    box-shadow: 0 0 10px #0f0;
-                }
+        .button-bar a:hover {
+            background: #0f0;
+            color: black;
+            box-shadow: 0 0 10px #0f0;
+        }
 
-                .button-bar a#contact-button.clicked {
-                    background: #0f0;
-                    color: black;
-                }
+        .button-bar a#contact-button.clicked {
+            background: #0f0;
+            color: black;
+        }
 
-        /* Terminal Boot Screen */
         #boot-screen {
             position: fixed;
             top: 0;
@@ -280,21 +260,25 @@
         #boot-cursor {
             display: inline-block;
             width: 10px;
+            height: 1rem;
             background: #0f0;
-            animation: blink 1s infinite;
+            animation: blink 0.5s infinite;
+            vertical-align: middle;
+        }
+
+        #prompt-text {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            white-space: pre;
+            display: none;
         }
 
         @keyframes blink {
-            0%, 50% {
-                opacity: 1;
-            }
-
-            51%, 100% {
-                opacity: 0;
-            }
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
         }
 
-        /* Matrix Rain Overlay */
         #matrix-overlay {
             position: fixed;
             top: 0;
@@ -311,7 +295,7 @@
 <body>
     <div id="boot-screen">
         <div id="boot-text"></div>
-        <div id="boot-cursor"></div>
+        <div id="prompt-text">PRESS ENTER TO ACCESS DATABASE: <span id="boot-cursor"></span></div>
     </div>
 
     <canvas id="matrix-overlay"></canvas>
@@ -369,7 +353,6 @@
     </div>
 
     <script>
-        // BOOT-UP SEQUENCE
         const welcomeArt = `
 WwwwwwwW                           WwwwwwwW               lllllll                                                                                  
 W::::::W                           W::::::W               l:::::l                                                                                  
@@ -393,62 +376,103 @@ W::::::W                           W::::::W               l:::::l
             "BYPASSING MAINFRAME...",
             "ACCESSING SYSTEM FILES...",
             "VERIFYING USER: GINKLEJEFF...",
+            "PROGRESS_BAR",
             "ACCESS GRANTED.",
-	    "WE ARE ANONYMOUS, WE ARE LEGION."
+            "WE ARE ANONYMOUS, WE ARE LEGION."
         ];
 
         const bootText = document.getElementById('boot-text');
         const bootCursor = document.getElementById('boot-cursor');
+        const promptText = document.getElementById('prompt-text');
         let lineIndex = 0;
 
         function typeLines() {
             if (lineIndex < bootLines.length) {
-                let line = bootLines[lineIndex];
-                let charIndex = 0;
-                let typer = setInterval(() => {
-                    bootText.textContent += line.charAt(charIndex);
-                    charIndex++;
-                    if (charIndex >= line.length) {
-                        clearInterval(typer);
-                        bootText.textContent += "\n";
-                        lineIndex++;
-                        setTimeout(typeLines, 400);
+                const currentLine = bootLines[lineIndex];
+                if (currentLine === "PROGRESS_BAR") {
+                    const progressFrames = [
+                        "▰═════════ 10%",
+                        "▰▰════════ 20%",
+                        "▰▰▰═══════ 30%",
+                        "▰▰▰▰══════ 40%",
+                        "▰▰▰▰▰═════ 50%",
+                        "▰▰▰▰▰▰════ 60%",
+                        "▰▰▰▰▰▰▰═══ 70%",
+                        "▰▰▰▰▰▰▰▰══ 80%",
+                        "▰▰▰▰▰▰▰▰▰═ 90%",
+                        "▰▰▰▰▰▰▰▰▰▰ 100%",
+                    ];
+                    let frameIndex = 0;
+                    function typeFrame() {
+                        let charIndex = 0;
+                        function typeChar() {
+                            if (charIndex < progressFrames[frameIndex].length) {
+                                bootText.textContent += progressFrames[frameIndex].charAt(charIndex);
+                                charIndex++;
+                                setTimeout(typeChar, 50);
+                            } else {
+                                bootText.textContent += "\n";
+                                frameIndex++;
+                                if (frameIndex < progressFrames.length) {
+                                    setTimeout(typeFrame, 250);
+                                } else {
+                                    lineIndex++;
+                                    setTimeout(typeLines, 400);
+                                }
+                            }
+                        }
+                        typeChar();
                     }
-                }, 50);
+                    typeFrame();
+                } else {
+                    let charIndex = 0;
+                    const typer = setInterval(() => {
+                        bootText.textContent += currentLine.charAt(charIndex);
+                        charIndex++;
+                        if (charIndex >= currentLine.length) {
+                            clearInterval(typer);
+                            bootText.textContent += "\n";
+                            lineIndex++;
+                            setTimeout(typeLines, 400);
+                        }
+                    }, 50);
+                }
             } else {
                 setTimeout(typeWelcome, 500);
             }
         }
 
         function typeWelcome() {
-            let line = welcomeArt;
             let charIndex = 0;
-            let typer = setInterval(() => {
-                bootText.textContent += line.charAt(charIndex);
+            const artTyper = setInterval(() => {
+                bootText.textContent += welcomeArt.charAt(charIndex);
                 charIndex++;
-                if (charIndex >= line.length) {
-                    clearInterval(typer);
+                if (charIndex >= welcomeArt.length) {
+                    clearInterval(artTyper);
                     setTimeout(() => {
-                        document.getElementById('boot-screen').style.opacity = '0';
-                        document.body.classList.add('loaded');
-                        setTimeout(() => {
-                            document.getElementById('boot-screen').style.display = 'none';
-                        }, 800);
-                    }, 200);
+                        promptText.style.display = 'block';
+                        document.addEventListener('keydown', handleEnter);
+                    }, 2000); // 2-second delay to admire ASCII art
                 }
-            }, 0.1);
+            }, 1); // Faster typing (1ms per character)
+        }
+
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                document.getElementById('boot-screen').style.display = 'none';
+                document.body.classList.add('loaded');
+                document.removeEventListener('keydown', handleEnter);
+            }
         }
 
         typeLines();
 
-        // CONTACT BUTTON
         const contactBtn = document.getElementById('contact-button');
         contactBtn.addEventListener('click', function () {
             contactBtn.innerText = "ginklejeff@gmail.com";
             contactBtn.classList.add("clicked");
         });
 
-        // GLITCH TITLE
         const title = document.getElementById('glitch-title');
         const originalText = "GINKLEJEFF";
         const glitchText = "G!nkl@J3ff";
@@ -462,7 +486,6 @@ W::::::W                           W::::::W               l:::::l
         }
         setInterval(triggerGlitch, 45000);
 
-        // MATRIX RAIN
         const matrixCanvas = document.getElementById('matrix-overlay');
         const ctx = matrixCanvas.getContext('2d');
         function resizeCanvas() {
