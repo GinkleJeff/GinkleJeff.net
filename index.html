@@ -15,11 +15,11 @@
 
         html, body {
             height: 100%;
-            background: url('anon-bg.jpg') no-repeat center center fixed;
+            background: url('samurai-bg.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Share Tech Mono', monospace;
-            color: #00ff00;
-            text-shadow: 0 0 5px #00ff00;
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
             overflow: hidden;
             position: relative;
         }
@@ -56,20 +56,20 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #00ff00;
+            background: #ff0000;
             border-radius: 5px;
-            box-shadow: 0 0 10px #00ff00;
+            box-shadow: 0 0 10px #ff0000;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00cc00;
-            box-shadow: 0 0 15px #00cc00;
-        }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #cc0000;
+                box-shadow: 0 0 15px #cc0000;
+            }
 
         #glitch-title {
             font-size: 4rem;
-            color: #0f0;
-            text-shadow: 0 0 5px #0f0, 0 0 20px #0f0;
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000, 0 0 20px #ff0000;
             position: relative;
             animation: flicker 2s infinite;
             cursor: pointer;
@@ -87,33 +87,51 @@
             0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
                 opacity: 1;
             }
+
             20%, 24%, 55% {
                 opacity: 0.3;
             }
         }
 
         @keyframes jiggle {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            20% { transform: translate(-2px, 1px) rotate(-1deg); }
-            40% { transform: translate(2px, -2px) rotate(1deg); }
-            60% { transform: translate(-1px, 1px) rotate(0deg); }
-            80% { transform: translate(1px, -1px) rotate(1deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            20% {
+                transform: translate(-2px, 1px) rotate(-1deg);
+            }
+
+            40% {
+                transform: translate(2px, -2px) rotate(1deg);
+            }
+
+            60% {
+                transform: translate(-1px, 1px) rotate(0deg);
+            }
+
+            80% {
+                transform: translate(1px, -1px) rotate(1deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
         }
 
         .glitch-active {
             animation: jiggle 0.08s infinite;
-            color: #006400 !important;
-            text-shadow: 0 0 10px #006400, 0 0 20px #003300;
+            color: #800000 !important;
+            text-shadow: 0 0 10px #800000, 0 0 20px #400000;
         }
 
         h2 {
             font-size: 1.5rem;
             margin-top: 1.5rem;
             margin-bottom: 0.4rem;
-            color: #0c0;
-            text-shadow: 0 0 8px #0f0;
-            border-bottom: 2px solid #0f0;
+            color: #ff0000;
+            text-shadow: 0 0 8px #ff0000;
+            border-bottom: 2px solid #ff0000;
             padding-bottom: 0.2rem;
             opacity: 0;
             transform: translateX(-20px);
@@ -133,6 +151,8 @@
             line-height: 1.3;
             opacity: 0;
             animation: fadeInText 1s forwards;
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
         }
 
         @keyframes fadeInText {
@@ -142,21 +162,21 @@
         }
 
         a {
-            color: #0f0;
             text-decoration: underline;
         }
 
         iframe {
-            border: 2px solid #0f0;
+            border: 2px solid #ff0000;
             width: 100%;
             opacity: 0;
             transform: translateY(20px);
             animation: popIn 0.8s forwards;
         }
 
-        iframe[data-testid="embed-iframe"] {
-            box-shadow: none;
-        }
+            iframe[data-testid="embed-iframe"] {
+                box-shadow: none;
+                height: 100%;
+            }
 
         @keyframes popIn {
             to {
@@ -206,33 +226,33 @@
             padding: 10px 0;
             z-index: 999;
             gap: 15px;
-            border-top: 2px solid #0f0;
+            border-top: 2px solid #ff0000;
         }
 
-        .button-bar a {
-            padding: 10px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: 0.2s;
-            display: inline-block;
-            user-select: none;
-            background: black;
-            color: #0f0;
-            border: 1px solid #0f0;
-            text-shadow: 0 0 5px #0f0;
-        }
+            .button-bar a {
+                padding: 10px 20px;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1rem;
+                transition: 0.2s;
+                display: inline-block;
+                user-select: none;
+                background: black;
+                color: #ff0000;
+                border: 1px solid #ff0000;
+                text-shadow: 0 0 5px #ff0000;
+            }
 
-        .button-bar a:hover {
-            background: #0f0;
-            color: black;
-            box-shadow: 0 0 10px #0f0;
-        }
+                .button-bar a:hover {
+                    background: #ff0000;
+                    color: black;
+                    box-shadow: 0 0 10px #ff0000;
+                }
 
-        .button-bar a#contact-button.clicked {
-            background: #0f0;
-            color: black;
-        }
+                .button-bar a#contact-button.clicked {
+                    background: #ff0000;
+                    color: black;
+                }
 
         #boot-screen {
             position: fixed;
@@ -241,7 +261,7 @@
             width: 100%;
             height: 100%;
             background: black;
-            color: #0f0;
+            color: #ff0000;
             font-family: 'Share Tech Mono', monospace;
             font-size: 0.8rem;
             padding: 20px;
@@ -255,13 +275,18 @@
 
         #boot-text {
             white-space: pre;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
         }
 
         #boot-cursor {
             display: inline-block;
             width: 10px;
             height: 1rem;
-            background: #0f0;
+            background: #ff0000;
             animation: blink 0.5s infinite;
             vertical-align: middle;
         }
@@ -275,8 +300,13 @@
         }
 
         @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
+            0%, 50% {
+                opacity: 1;
+            }
+
+            51%, 100% {
+                opacity: 0;
+            }
         }
 
         #matrix-overlay {
@@ -295,7 +325,7 @@
 <body>
     <div id="boot-screen">
         <div id="boot-text"></div>
-        <div id="prompt-text">PRESS ENTER TO ACCESS DATABASE: <span id="boot-cursor"></span></div>
+        <div id="prompt-text">PRESS ENTER TO ACCESS NIGHT CITY: <span id="boot-cursor"></span></div>
     </div>
 
     <canvas id="matrix-overlay"></canvas>
@@ -305,30 +335,24 @@
         <div class="left-panel">
             <h1 id="glitch-title" data-text="GINKLEJEFF">GINKLEJEFF</h1>
 
-            <h2>Anonymous Message</h2>
-            <iframe width="100%" height="315"
-                    src="https://www.youtube.com/embed/VT2CjGNjtoM"
-                    title="Anonymous Message to the Media"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-            </iframe>
-            <p style="color:#0f0; text-shadow:0 0 5px #0f0; margin-top:1rem;">
-                We are Anonymous. We are Legion. We do not forgive. We do not forget. Expect us.
+            <h2>Chippin' In'</h2>
+            <p>
+                ""Hear my call, I'm Chippin' In, Total War I'm Chippin' in, Casings Fall I'm Chippin' In, Kill Them All." "
             </p>
 
             <h2>Bio</h2>
             <p>
-                I am GinkleJeff, a programmer/artist who wants an engineering degree. I make games with fast movement mechanics and a focus on powering up throughout gameplay. Godot/GDScript is my engine of choice, but I also dabble in browser-based programming. I also have a fascination with the late 2000's "Hacktivist" Theme/Aesthetic (as I'm Sure you can tell from the way this site looks.) along with the Late 90's Vaporwave Aesthetic (Which is what this site used to look like,) I Consume Oranges like Cyberpunk Consumes VRAM, and my Dream Car is either the 1995 Subaru Outback, or the 1987 Honda Accord.
+                I am GinkleJeff, a programmer/developer whos working towards an engineering degree. I make games with fast movement mechanics inspired mainly by ULTRAKILL and other famous Movement Shooters and Indie titles. Godot4.3/GDScript is my preferred engine, but I also dabble in browser-based programming. I also have a current obsession with the Video and role playing game Cyberpunk 2077, (or Cyberpunk 2013/2020 in the case of the TTRPG) I Consume Oranges like Cyberpunk 2077 Consumes VRAM, and my Dream Car is either the 1995 Subaru Outback, or the 1987 Honda Accord, along with a Honda Rebel 250.
             </p>
 
             <h2>Bloodbath</h2>
             <p>
-                A first-person hack-n-slash fever dream. You are Vandred, tearing through demons like an unpaid tax collector with a V for Vendetta. Kill for power, and Parry to heal. Think Ultrakill + Devil May Cry with just enough Rouglite elements to deeply upset the Pope.
+                A high-speed hack and slash action game inspired heavily by Ultrakill, Devil May Cry, Quake II, and other "Boomer Shooters" Such as DOOM and Wolfenstein 3D featuring fast gameplay mechanics and the player getting more powerful as the game moves forward.
             </p>
 
             <h2>Chaos Cathedral</h2>
             <p>
-                2D arena bullet hell. Holy violence and divine explosions. Play as a wonderous gaggle of weirdos, kill gods, and turn a cathedral into early 2000's rave featuring Cuthulhu as the DJ.
+                A 2D action platformer/shooter with roguelike elements and dynamic movement mechanics, combining elements from games such as "The Binding of Isaac", "Rounds", and others such as "Enter the Gungeon" and its spin off title "Exit the Gungeon".
             </p>
 
             <h2>HyperCube</h2>
@@ -340,8 +364,8 @@
         </div>
 
         <div class="right-panel">
-            <h2>We Are Legion</h2>
-            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0X2eCw3VbBp03QasUboMm7?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <h2>Samurai Sounds</h2>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7mCwUdctNvITTq3l1nsECg?utm_source=generator" width="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
     </div>
 
@@ -354,31 +378,50 @@
 
     <script>
         const welcomeArt = `
-WwwwwwwW                           WwwwwwwW               lllllll                                                                                  
-W::::::W                           W::::::W               l:::::l                                                                                  
-W::::::W                           W::::::W               l:::::l                                                                                  
- W:::::W           WWWWW           W:::::W eeeeeeeeeeee    l::::l     cccccccccccccccc   ooooooooooo      mmmmmmm    mmmmmmm       eeeeeeeeeeee    
-  W:::::W         W:::::W         W:::::Wee::::::::::::ee  l::::l   cc:::::::::::::::c oo:::::::::::oo  mm:::::::m  m:::::::mm   ee::::::::::::ee  
-   W:::::W       W:::::::W       W:::::We::::::eeeee:::::eel::::l  c:::::::::::::::::co:::::::::::::::om::::::::::mm::::::::::m e::::::eeeee:::::ee
-    W:::::W     W:::::::::W     W:::::We::::::e     e:::::el::::l c:::::::cccccc:::::co:::::ooooo:::::om::::::::::::::::::::::me::::::e     e:::::e
-     W:::::W   W:::::W:::::W   W:::::W e:::::::eeeee::::::el::::l c::::::c     ccccccco::::o     o::::om:::::mmm::::::mmm:::::me:::::::eeeee::::::e
-      W:::::W W:::::W W:::::W W:::::W  e:::::::::::::::::e l::::l c:::::c             o::::o     o::::om::::m   m::::m   m::::me:::::::::::::::::e 
-       W:::::W:::::W   W:::::W:::::W   e::::::eeeeeeeeeee  l::::l c:::::c             o::::o     o::::om::::m   m::::m   m::::me::::::eeeeeeeeeee  
-        W:::::::::W     W:::::::::W    e:::::::e           l::::l c::::::c     ccccccco::::o     o::::om::::m   m::::m   m::::me:::::::e           
-         W:::::::W       W:::::::W     e::::::::e         l::::::lc:::::::cccccc:::::co:::::ooooo:::::om::::m   m::::m   m::::me::::::::e          
-          W:::::W         W:::::W       e::::::::eeeeeeee l::::::l c:::::::::::::::::co:::::::::::::::om::::m   m::::m   m::::m e::::::::eeeeeeee  
-           W:::W           W:::W         ee:::::::::::::e l::::::l  cc:::::::::::::::c oo:::::::::::oo m::::m   m::::m   m::::m  ee:::::::::::::e  
-            WWW             WWW            eeeeeeeeeeeeee llllllll    cccccccccccccccc   ooooooooooo   mmmmmm   mmmmmm   mmmmmm    eeeeeeeeeeeeee`;
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⠿⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⠀⠅⠀⠀⠀⠀⠀⠀⢀⡄⠀⠀⠀⣿⣿⣿⣗⣠⣾⡇⠀⠀⠀⠀⢠⠆⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⢸⣆⠀⠀⢰⣿⣿⣿⣿⣿⣯⠀⢀⣴⠆⠀⠻⠂⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⣷⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⢀⣾⣿⣿⣿⣿⣿⡿⣥⣾⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⡆⠀⠀⣀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⢹⣿⠀⠀⠀⣴⠃⠀⣠⡆.⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠱⣄⠀⠀⠀⠀⠈⣿⡇⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀⠘⠁⠀⠀⣰⣿⠀⢰⠟⠀⣤⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠀⠀⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⢀⠁⠀⢀⣰⣿⣿⡿⠆⠈⠀⣰⣷⡄⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠘⢿⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⡾⣧⡜⠀⣠⣿⣿⣿⣿⡿⠋⣹⣿⣿⣿⠟⢸⣿⣦⣴⣿⣿⣿⡿⠁⠀⠀⣾⣿⣿⠁⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⠀⠀⢹⣿⣧⠀⠀⠀⠀⡀⢀⣾⢀⣿⣿⣿⣾⣿⣿⣿⣿⠛⠁⢠⠿⠟⠉⠁⠀⢸⣹⣿⣿⠛⠻⣯⠁⠀⠀⣀⣿⠿⠁⠀⠀⠀⣆⢹
+⠀⠀⠰⣄⠸⣷⡄⠀⢿⣟⠀⠀⠀⠀⣷⡀⣇⠀⣿⣿⠿⣿⠛⣿⠏⠀⠀⡄⠀⢀⣴⡾⠁⠀⣼⣿⡿⠏⠀⠐⣿⡄⠀⣰⠋⠀⠀⣺⠀⠀⠀⢹⣘
+⠀⠀⠠⣽⣶⡿⠇⠀⠀⢉⠀⠶⠒⠀⠘⢷⣿⣥⠈⠿⠀⠘⢆⠘⠀⢠⣿⡁⠀⣾⣿⠃⠀⣸⢿⣿⣇⣀⠀⢀⣿⡇⠀⡘⠀⠀⠸⣿⠀⠀⠀⢸⠁
+⠀⠀⠀⠘⠋⢀⠀⣄⠀⣆⠁⣾⣿⣧⠀⠘⣿⣿⣦⢸⣦⠀⠈⣤⣼⣿⣿⣿⣾⡿⠁⠀⠈⣠⣾⣿⣿⣿⣿⣿⣿⡇⢀⣧⠀⠲⣀⣿⡆⠀⠐⠀⠀
+⠀⠀⠀⠀⡶⢠⣾⡿⠷⠿⢷⣿⣿⣿⠇⠀⠋⢹⣿⣶⣿⣷⣶⣿⣿⣿⠋⠉⣿⠃⠀⢀⣾⣿⣿⣿⣿⡿⠻⠙⠿⡇⠈⣿⠁⠀⣿⠏⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⡀⠙⡁⠶⣿⡿⢒⣠⠀⡤⠀⢐⠀⠸⣿⣿⣿⣿⣿⡟⠉⢿⠀⢸⣿⡀⠀⢸⣿⣿⣿⠟⠁⠀⠀⠀⠀⢱⠀⠎⠠⠔⠁⠀⠀⠀⠀⠀⠀
+⠀⠀⣶⠀⡇⢄⠘⠲⣦⠰⠟⠉⠒⠲⡄⠀⠁⢸⣿⠟⠁⢸⠟⢣⠀⠻⡀⠘⢿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠘⡆⠀⣶⠃⣰⡆⠀⠀⠀⠀⠀
+ ⠀⣿⣦⠈⠈⠛⢶⣦⠀⡸⡀⠀⠀⡸⠀⠀⠈⠁⠀⠰⠃⠀⢸⣄⠀⠘⠂⡀⢻⣿⡿⠟⠀⢤⠀⠀⠀⠀⠀⠀⢰⠗⢠⡯⢰⣿⠁⠀⠀⠀⠀⠀
+⠀⣼⣿⡿⠁⠀⠈⢀⣄⠀⠷⣬⣑⡨⣴⡇⣴⠀⢀⣄⣠⣤⣴⣿⣾⣷⢄⡀⠀⠈⠀⠀⠈⠓⠋⠀⠀⠀⠀⢀⣼⠏⠀⣸⡇⢨⡏⠀⠀⠀⠀⠀⠀
+⠀⢫⣿⡃⠀⢰⣿⣦⣅⡀⠛⠶⠶⠶⠌⠁⠀⠀⠀⠀⠉⠉⣿⣹⣿⠉⠙⣌⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⡞⠁⠀⣰⢫⡇⠈⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠈⠇⠘⠘⢿⣥⣀⠉⠛⣿⣷⣶⣿⣿⡟⢀⣴⠂⠀⠀⠀⠹⣿⣧⡀⠀⠙⢦⡀⠀⠀⢦⣄⣤⣨⣭⣤⣠⠴⠋⠀⠸⠁⠀⢦⡀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣬⣙⡛⠓⠒⢒⢀⣤⠀⣄⠻⣿⣄⠀⠀⠀⢀⣿⣿⣽⣦⡀⠀⠀⠳⣄⡀⠀⠈⠛⠛⠛⠁⠀⡠⠞⠁⠀⠻⣦⡹⣦⡐⢄⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⣻⠟⣛⣃⣸⣿⡇⣹⣿⡷⠀⣠⠟⢻⣿⢿⠛⠋⠃⡄⠀⠈⢿⣶⣶⠦⢶⡖⠆⢁⣄⠐⢿⣷⣄⠈⠻⣌⢻⣆⠡⡀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢋⣼⣿⣿⡿⠙⢁⣾⣿⡇⠀⠀⣠⣾⣿⠀⠀⠀⣴⠃⠀⣀⣀⡈⠉⠛⢷⣾⠀⠻⣿⣷⣄⠙⠛⣡⣄⡹⣧⠹⡇⢱
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠘⠗⣠⣌⠛⠀⠹⠿⠿⣇⠀⠀⠻⠿⠋⠀⠀⠋⠁⡔⠚⠉⣉⡋⠐⠀⠀⢟⠀⠀⠈⠻⣿⠇⣀⠈⠛⢛⣿⡗⢃⡌
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⢛⣴⣿⣿⣧⠰⣷⢰⡆⣶⢠⠀⠰⣦⣤⣤⣴⠶⠉⠀⢰⣾⣿⣿⣦⠈⠀⠀⠀⠀⠀⠀⠨⡘⢿⣿⣿⣿⣿⠇⡼⠀
+⠀⠀⠀⠀⢀⣀⣤⠶⢟⣫⣴⣿⣿⣿⣿⠏⠰⣤⡤⠔⠀⠀⠀⠀⠉⠉⠉⠁⠀⠀⠀⠈⠻⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠈⠒⠦⠭⠭⠥⠚⠀⠀
+⠀⠀⠴⠞⣛⣭⣴⣾⣿⣿⣿⣿⠿⠛⣡⢸⣷⣌⠓⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⣦⠐⣌⠻⢿⣿⣿⣷⣦⣬⣓⡒⠤⠤⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠤⣭⣭⣭⣭⣭⣭⣭⣭⠐⢶⡃⠉⠘⠿⠿⠈⡁⣠⣾⣿⣿⢿⣷⣶⣄⡙⠂⢾⣿⠀⠟⣡⣤⣍⡛⠻⢿⣿⣿⣿⡿⠶⢒⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠈⠉⠁⠀⠀⠀⠀⠈⢿⣤⣀⣀⣦⠿⠛⠉⢁⡀⠀⢀⣀⡀⠙⠹⠿⣷⣦⣤⣞⣿⣿⠟⠀⠘⠓⠲⠶⠶⠒⠋⠁⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠓⠋⣡⡴⢁⣴⣿⣿⣦⣶⣿⣷⣄⠀⢶⣤⣭⠍⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢁⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⠄⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠿⠿⠟⠻⠿⠿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+`;
 
         const bootLines = [
-            "Initializing GinkleJeff SuperSite...",
-            "ESTABLISHING BACKDOOR CONNECTION...",
-            "BYPASSING MAINFRAME...",
-            "ACCESSING SYSTEM FILES...",
+            "Initializing GinkleJeff's Night City Terminal...",
+            "CONNECTING TO ARASAKA NETWORK...",
+            "BYPASSING THE BLACKWALL...",
+            "ACCESSING SILVERHAND RELIC DATA...",
             "VERIFYING USER: GINKLEJEFF...",
             "PROGRESS_BAR",
             "ACCESS GRANTED.",
-            "WE ARE ANONYMOUS, WE ARE LEGION."
+            "WAKE THE FUCK UP, SAMURAI."
         ];
 
         const bootText = document.getElementById('boot-text');
@@ -438,7 +481,8 @@ W::::::W                           W::::::W               l:::::l
                     }, 50);
                 }
             } else {
-                setTimeout(typeWelcome, 500);
+                bootText.textContent = "";
+                typeWelcome();
             }
         }
 
@@ -449,12 +493,10 @@ W::::::W                           W::::::W               l:::::l
                 charIndex++;
                 if (charIndex >= welcomeArt.length) {
                     clearInterval(artTyper);
-                    setTimeout(() => {
-                        promptText.style.display = 'block';
-                        document.addEventListener('keydown', handleEnter);
-                    }, 2000); // 2-second delay to admire ASCII art
+                    promptText.style.display = 'block';
+                    document.addEventListener('keydown', handleEnter);
                 }
-            }, 1); // Faster typing (1ms per character)
+            }, 1);
         }
 
         function handleEnter(event) {
@@ -499,7 +541,7 @@ W::::::W                           W::::::W               l:::::l
         function startMatrix() {
             ctx.fillStyle = "rgba(0,0,0,0.05)";
             ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-            ctx.fillStyle = "#0F0";
+            ctx.fillStyle = "#ff0000";
             ctx.font = "15px monospace";
             for (let i = 0; i < drops.length; i++) {
                 let text = letters.charAt(Math.floor(Math.random() * letters.length));
