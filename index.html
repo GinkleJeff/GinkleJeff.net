@@ -432,40 +432,22 @@
             if (lineIndex < bootLines.length) {
                 const currentLine = bootLines[lineIndex];
                 if (currentLine === "PROGRESS_BAR") {
-                    const progressFrames = [
-                        "▰═════════ 10%",
-                        "▰▰════════ 20%",
-                        "▰▰▰═══════ 30%",
-                        "▰▰▰▰══════ 40%",
-                        "▰▰▰▰▰═════ 50%",
-                        "▰▰▰▰▰▰════ 60%",
-                        "▰▰▰▰▰▰▰═══ 70%",
-                        "▰▰▰▰▰▰▰▰══ 80%",
-                        "▰▰▰▰▰▰▰▰▰═ 90%",
-                        "▰▰▰▰▰▰▰▰▰▰ 100%",
-                    ];
-                    let frameIndex = 0;
-                    function typeFrame() {
-                        let charIndex = 0;
-                        function typeChar() {
-                            if (charIndex < progressFrames[frameIndex].length) {
-                                bootText.textContent += progressFrames[frameIndex].charAt(charIndex);
-                                charIndex++;
-                                setTimeout(typeChar, 50);
-                            } else {
-                                bootText.textContent += "\n";
-                                frameIndex++;
-                                if (frameIndex < progressFrames.length) {
-                                    setTimeout(typeFrame, 250);
-                                } else {
-                                    lineIndex++;
-                                    setTimeout(typeLines, 400);
-                                }
-                            }
+                    const previousText = bootText.textContent;
+                    let progress = 0;
+                    const updateProgress = () => {
+                        const filled = Math.floor(progress / 10);
+                        const bar = '▰'.repeat(filled) + '═'.repeat(10 - filled) + ' ' + progress + '%';
+                        bootText.textContent = previousText + bar;
+                        progress++;
+                        if (progress <= 100) {
+                            setTimeout(updateProgress, 50);
+                        } else {
+                            bootText.textContent += '\n';
+                            lineIndex++;
+                            setTimeout(typeLines, 400);
                         }
-                        typeChar();
-                    }
-                    typeFrame();
+                    };
+                    updateProgress();
                 } else {
                     let charIndex = 0;
                     const typer = setInterval(() => {
