@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>GinkleJeff's SuperSite</title>
-    <link rel="icon" href="favicon.gif" type="image/png" />
+    <link rel="icon" href="favicon.png" type="image/png" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
 
@@ -15,47 +15,12 @@
 
         html, body {
             height: 100%;
-            background: url('vaporwave.jpg') no-repeat center center fixed;
+            background: url('vaporwave.gif') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Orbitron', sans-serif;
             overflow: hidden;
-            color: #ff00ff;
+            color: #ff9bd8; /* body text = light hot pink */
             position: relative;
-        }
-
-        #crt-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1000;
-            pointer-events: none;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.1),
-                rgba(0, 0, 0, 0.1) 1px,
-                transparent 1px,
-                transparent 2px
-            );
-            animation: crt-jitter 0.1s infinite;
-        }
-
-        @keyframes crt-jitter {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(0.5px, -0.5px); }
-            100% { transform: translate(-0.5px, 0.5px); }
-        }
-
-        #matrix-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-            opacity: 0.8;
         }
 
         .overlay {
@@ -68,32 +33,6 @@
             z-index: 0;
         }
 
-        #sandevistan-cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: #0000ff;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1001;
-            box-shadow: 0 0 10px #0000ff, 0 0 20px #0000ff;
-        }
-
-        .afterimage {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: rgba(0, 0, 255, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1000;
-            animation: fade 0.5s ease-out forwards;
-        }
-
-        @keyframes fade {
-            to { opacity: 0; transform: scale(0.5); }
-        }
-
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -103,14 +42,14 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #ff4500;
+            background: #ff71ce;
             border-radius: 10px;
-            box-shadow: 0 0 10px #ff4500;
+            box-shadow: 0 0 10px #ff71ce;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #cc4500;
-            box-shadow: 0 0 10px #cc4500;
+            background: #fff685;
+            box-shadow: 0 0 10px #fff685;
         }
 
         .container {
@@ -188,7 +127,7 @@
             align-items: center;
             padding: 10px 0;
             z-index: 999;
-            box-shadow: 0 -2px 10px #ff00ff;
+            box-shadow: 0 -2px 10px #ff71ce;
             gap: 15px;
         }
 
@@ -201,21 +140,11 @@
             transition: 0.2s;
             display: inline-block;
             user-select: none;
-            animation: neon-glow 1.5s ease-in-out infinite alternate;
-        }
-
-        @keyframes neon-glow {
-            from {
-                box-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
-            }
-            to {
-                box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
-            }
         }
 
         .button-bar a.github {
             background: #555;
-            color: #ff4500;
+            color: black;
             box-shadow: 0 0 10px #555;
         }
 
@@ -247,119 +176,48 @@
         }
 
         .button-bar a#contact-button {
-            background: #ff4500;
+            background: #ff1493; /* HOT pink */
             color: white;
-            box-shadow: 0 0 12px #ff4500;
+            box-shadow: 0 0 12px #ff1493;
         }
 
         .button-bar a#contact-button.clicked {
-            background: #c780ff;
+            background: #c780ff; /* light purple */
             color: black;
             box-shadow: 0 0 20px #c780ff;
-        }
-
-        #boot-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: black;
-            color: #ff0000;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.8rem;
-            padding: 20px;
-            z-index: 9999;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-        }
-
-        #boot-text {
-            white-space: pre;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        #boot-cursor {
-            display: inline-block;
-            width: 10px;
-            height: 1rem;
-            background: #ff0000;
-            animation: blink 0.5s infinite;
-            vertical-align: middle;
-        }
-
-        #prompt-text {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            white-space: pre;
-            display: none;
-        }
-
-        @keyframes blink {
-            0%, 50% {
-                opacity: 1;
-            }
-            51%, 100% {
-                opacity: 0;
-            }
-        }
-
-        #particle-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1000;
-            pointer-events: none;
-            display: none;
         }
     </style>
 </head>
 <body>
-    <div id="boot-screen">
-        <div id="boot-text"></div>
-        <div id="prompt-text">WE'VE GOT A CITY TO BURN: <span id="boot-cursor"></span></div>
-    </div>
-
-    <canvas id="matrix-overlay"></canvas>
-    <canvas id="particle-canvas"></canvas>
-    <div id="crt-overlay"></div>
     <div class="overlay"></div>
-    <div id="sandevistan-cursor"></div>
 
     <div class="container">
         <div class="left-panel">
             <h1 id="glitch-title">GINKLEJEFF</h1>
 
+            <h2>Long Live 𝕸𝖔𝖙𝖔̈𝖗𝖍𝖊𝖆𝖉</h2>
+            <p>
+                “Apparently people don’t like the truth, but I do like it; I like it because it upsets a lot of people.” - Lemmy Kilmisters
+            </p>
+            
             <h2>Bio</h2>
             <p>
-                I am GinkleJeff, a programmer/developer whos working towards an engineering degree. I make games with fast movement mechanics inspired mainly by ULTRAKILL and other famous Movement Shooters and Indie titles. Godot4.3/GDScript is my preferred engine, but I also dabble in browser-based programming. my Dream Car is either the 1995 Subaru Outback, or the 1987 Honda Accord, along with a Honda Rebel 250.
+                I'm GinkleJeff, an indie game developer/programmer/artist specializing in strategic skillful gameplay and chaotic experiences with a focus on movement. I primarily work in Godot/GDScript, but I make browser games in HTML/CSS/JavaScript as well. Expect kinetic gameplay, glowing visuals, and systems that feed off of skill and momentum. When I'm not making games, I'm eating copious amounts of oranges or making horribly designed missiles in Gmod.
             </p>
 
             <h2>Bloodbath</h2>
             <p>
-                A high-speed hack and slash action game inspired heavily by Ultrakill, Devil May Cry, Quake II, and other "Boomer Shooters" Such as DOOM and Wolfenstein 3D featuring fast gameplay mechanics and the player getting more powerful as the game moves forward.
+                A first person hack-and-slash game being developed in Godot. You play as Vandred, a lab-grown superhuman mercilessly tearing down demons in a 14 year old's imagination of hell. The combat is fast and frantic; parrying gives back health, and the Bloodblade levels up by absorbing enemy abilities. Think Ultrakill but with Devil May Cry mixed in with some Binding of Isaac or Dead Cells but without roguelike elements—oh, and your lab clone/rival/brother is actively trying to take your arm off.
             </p>
 
             <h2>Chaos Cathedral</h2>
             <p>
-                A 2D action platformer/shooter with roguelike elements and dynamic movement mechanics, combining elements from games such as "The Binding of Isaac", "Rounds", and others such as "Enter the Gungeon" and its spin off title "Exit the Gungeon".
+                A 2D arena roguelike based on ridiculous weaponry, divine decadence and cartoon violence. Choose from a gaggle of weirdos and bless yourself in a holy arena filled with bullet hell bosses and senseless sacrilege. Made in Godot. Explosions are mandatory.
             </p>
 
             <h2>HyperCube</h2>
             <p>
-                A cyan cube murder simulator:
-                <a href="https://ginklejeff.github.io/HyperCube" target="_blank">ginklejeff.github.io/HyperCube</a>.
-                Smash, combo, glow. Become the polygonal apex predator.
+                A Javascript browser game located at <a href="https://ginklejeff.github.io/HyperCube" target="_blank" style="color:#01cdfe; text-decoration: underline;">ginklejeff.github.io/HyperCube</a>. You are a cyan-glowing cube who murders enemies by SLAMMING into everyone with speed. It's all about combos, precision matters, and everything glows like an overexposed Frankenstein monitor during a synthwave mixtape.
             </p>
         </div>
 
@@ -380,119 +238,6 @@
     </div>
 
     <script>
-        const welcomeArt = `
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⠿⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⠀⠅⠀⠀⠀⠀⠀⠀⢀⡄⠀⠀⠀⣿⣿⣿⣗⣠⣾⡇⠀⠀⠀⠀⢠⠆⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⢸⣆⠀⠀⢰⣿⣿⣿⣿⣿⣯⠀⢀⣴⠆⠀⠻⠂⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⣷⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⢀⣾⣿⣿⣿⣿⣿⡿⣥⣾⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⡆⠀⠀⣀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⢹⣿⠀⠀⠀⣴⠃⠀⣠⡆.⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠱⣄⠀⠀⠀⠀⠈⣿⡇⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀⠘⠁⠀⠀⣰⣿⠀⢰⠟⠀⣤⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠀⠀⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⢀⠁⠀⢀⣰⣿⣿⡿⠆⠈⠀⣰⣷⡄⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠘⢿⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⡾⣧⡜⠀⣠⣿⣿⣿⣿⡿⠋⣹⣿⣿⣿⠟⢸⣿⣦⣴⣿⣿⣿⡿⠁⠀⠀⣾⣿⣿⠁⠀⠀⠀⠀
-⠀⠀⠀⠀⢀⠀⠀⢹⣿⣧⠀⠀⠀⠀⡀⢀⣾⢀⣿⣿⣿⣾⣿⣿⣿⣿⠛⠁⢠⠿⠟⠉⠁⠀⢸⣹⣿⣿⠛⠻⣯⠁⠀⠀⣀⣿⠿⠁⠀⠀⠀⣆⢹
-⠀⠀⠰⣄⠸⣷⡄⠀⢿⣟⠀⠀⠀⠀⣷⡀⣇⠀⣿⣿⠿⣿⠛⣿⠏⠀⠀⡄⠀⢀⣴⡾⠁⠀⣼⣿⡿⠏⠀⠐⣿⡄⠀⣰⠋⠀⠀⣺⠀⠀⠀⢹⣘
-⠀⠀⠠⣽⣶⡿⠇⠀⠀⢉⠀⠶⠒⠀⠘⢷⣿⣥⠈⠿⠀⠘⢆⠘⠀⢠⣿⡁⠀⣾⣿⠃⠀⣸⢿⣿⣇⣀⠀⢀⣿⡇⠀⡘⠀⠀⠸⣿⠀⠀⠀⢸⠁
-⠀⠀⠀⠘⠋⢀⠀⣄⠀⣆⠁⣾⣿⣧⠀⠘⣿⣿⣦⢸⣦⠀⠈⣤⣼⣿⣿⣿⣾⡿⠁⠀⠈⣠⣾⣿⣿⣿⣿⣿⣿⡇⢀⣧⠀⠲⣀⣿⡆⠀⠐⠀⠀
-⠀⠀⠀⠀⡶⢠⣾⡿⠷⠿⢷⣿⣿⣿⠇⠀⠋⢹⣿⣶⣿⣷⣶⣿⣿⣿⠋⠉⣿⠃⠀⢀⣾⣿⣿⣿⣿⡿⠻⠙⠿⡇⠈⣿⠁⠀⣿⠏⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⡀⠙⡁⠶⣿⡿⢒⣠⠀⡤⠀⢐⠀⠸⣿⣿⣿⣿⣿⡟⠉⢿⠀⢸⣿⡀⠀⢸⣿⣿⣿⠟⠁⠀⠀⠀⠀⢱⠀⠎⠠⠔⠁⠀⠀⠀⠀⠀⠀
-⠀⠀⣶⠀⡇⢄⠘⠲⣦⠰⠟⠉⠒⠲⡄⠀⠁⢸⣿⠟⠁⢸⠟⢣⠀⠻⡀⠘⢿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠘⡆⠀⣶⠃⣰⡆⠀⠀⠀⠀⠀
- ⠀⣿⣦⠈⠈⠛⢶⣦⠀⡸⡀⠀⠀⡸⠀⠀⠈⠁⠀⠰⠃⠀⢸⣄⠀⠘⠂⡀⢻⣿⡿⠟⠀⢤⠀⠀⠀⠀⠀⠀⢰⠗⢠⡯⢰⣿⠁⠀⠀⠀⠀⠀
-⠀⣼⣿⡿⠁⠀⠈⢀⣄⠀⠷⣬⣑⡨⣴⡇⣴⠀⢀⣄⣠⣤⣴⣿⣾⣷⢄⡀⠀⠈⠀⠀⠈⠓⠋⠀⠀⠀⠀⢀⣼⠏⠀⣸⡇⢨⡏⠀⠀⠀⠀⠀⠀
-⠀⢫⣿⡃⠀⢰⣿⣦⣅⡀⠛⠶⠶⠶⠌⠁⠀⠀⠀⠀⠉⠉⣿⣹⣿⠉⠙⣌⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⡞⠁⠀⣰⢫⡇⠈⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠈⠇⠘⠘⢿⣥⣀⠉⠛⣿⣷⣶⣿⣿⡟⢀⣴⠂⠀⠀⠀⠹⣿⣧⡀⠀⠙⢦⡀⠀⠀⢦⣄⣤⣨⣭⣤⣠⠴⠋⠀⠸⠁⠀⢦⡀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⣬⣙⡛⠓⠒⢒⢀⣤⠀⣄⠻⣿⣄⠀⠀⠀⢀⣿⣿⣽⣦⡀⠀⠀⠳⣄⡀⠀⠈⠛⠛⠛⠁⠀⡠⠞⠁⠀⠻⣦⡹⣦⡐⢄⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⣻⠟⣛⣃⣸⣿⡇⣹⣿⡷⠀⣠⠟⢻⣿⢿⠛⠋⠃⡄⠀⠈⢿⣶⣶⠦⢶⡖⠆⢁⣄⠐⢿⣷⣄⠈⠻⣌⢻⣆⠡⡀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢋⣼⣿⣿⡿⠙⢁⣾⣿⡇⠀⠀⣠⣾⣿⠀⠀⠀⣴⠃⠀⣀⣀⡈⠉⠛⢷⣾⠀⠻⣿⣷⣄⠙⠛⣡⣄⡹⣧⠹⡇⢱
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠘⠗⣠⣌⠛⠀⠹⠿⠿⣇⠀⠀⠻⠿⠋⠀⠀⠋⠁⡔⠚⠉⣉⡋⠐⠀⠀⢟⠀⠀⠈⠻⣿⠇⣀⠈⠛⢛⣿⡗⢃⡌
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⢛⣴⣿⣿⣧⠰⣷⢰⡆⣶⢠⠀⠰⣦⣤⣤⣴⠶⠉⠀⢰⣾⣿⣿⣦⠈⠀⠀⠀⠀⠀⠀⠨⡘⢿⣿⣿⣿⣿⠇⡼⠀
-⠀⠀⠀⠀⢀⣀⣤⠶⢟⣫⣴⣿⣿⣿⣿⠏⠰⣤⡤⠔⠀⠀⠀⠀⠉⠉⠉⠁⠀⠀⠀⠈⠻⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠈⠒⠦⠭⠭⠥⠚⠀⠀
-⠀⠀⠴⠞⣛⣭⣴⣾⣿⣿⣿⣿⠿⠛⣡⢸⣷⣌⠓⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⣦⠐⣌⠻⢿⣿⣿⣷⣦⣬⣓⡒⠤⠤⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠤⣭⣭⣭⣭⣭⣭⣭⣭⠐⢶⡃⠉⠘⠿⠿⠈⡁⣠⣾⣿⣿⢿⣷⣶⣄⡙⠂⢾⣿⠀⠟⣡⣤⣍⡛⠻⢿⣿⣿⣿⡿⠶⢒⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠈⠉⠁⠀⠀⠀⠀⠈⢿⣤⣀⣀⣦⠿⠛⠉⢁⡀⠀⢀⣀⡀⠙⠹⠿⣷⣦⣤⣞⣿⣿⠟⠀⠘⠓⠲⠶⠶⠒⠋⠁⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠓⠋⣡⡴⢁⣴⣿⣿⣦⣶⣿⣷⣄⠀⢶⣤⣭⠍⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢁⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⠄⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠿⠿⠟⠻⠿⠿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-`;
-
-        const bootLines = [
-            "Initializing GinkleJeff's Night City Terminal...",
-            "CONNECTING TO ARASAKA NETWORK...",
-            "BYPASSING NETRUNNING FIREWALL...",
-            "ACCESSING RELIC DATA...",
-            "PROGRESS_BAR",
-            "ACCESS GRANTED.",
-            "WAKE THE FUCK UP, SAMURAI."
-        ];
-
-        const bootText = document.getElementById('boot-text');
-        const bootCursor = document.getElementById('boot-cursor');
-        const promptText = document.getElementById('prompt-text');
-        let lineIndex = 0;
-
-        function typeLines() {
-            if (lineIndex < bootLines.length) {
-                const currentLine = bootLines[lineIndex];
-                if (currentLine === "PROGRESS_BAR") {
-                    const previousText = bootText.textContent;
-                    let progress = 0;
-                    const updateProgress = () => {
-                        const filled = Math.floor(progress / 10);
-                        const bar = '▰'.repeat(filled) + '═'.repeat(10 - filled) + ' ' + progress + '%';
-                        bootText.textContent = previousText + bar;
-                        progress++;
-                        if (progress <= 100) {
-                            setTimeout(updateProgress, 50);
-                        } else {
-                            bootText.textContent += '\n';
-                            lineIndex++;
-                            setTimeout(typeLines, 400);
-                        }
-                    };
-                    updateProgress();
-                } else {
-                    let charIndex = 0;
-                    const typer = setInterval(() => {
-                        bootText.textContent += currentLine.charAt(charIndex);
-                        charIndex++;
-                        if (charIndex >= currentLine.length) {
-                            clearInterval(typer);
-                            bootText.textContent += "\n";
-                            lineIndex++;
-                            setTimeout(typeLines, 50);
-                        }
-                    }, 20);
-                }
-            } else {
-                bootText.textContent = "";
-                typeWelcome();
-            }
-        }
-
-        function typeWelcome() {
-            let charIndex = 0;
-            const artTyper = setInterval(() => {
-                bootText.textContent += welcomeArt.charAt(charIndex);
-                charIndex++;
-                if (charIndex >= welcomeArt.length) {
-                    clearInterval(artTyper);
-                    promptText.style.display = 'block';
-                    document.addEventListener('keydown', handleEnter);
-                }
-            }, 1);
-        }
-
-        function handleEnter(event) {
-            if (event.key === 'Enter') {
-                document.getElementById('boot-screen').style.display = 'none';
-                document.body.classList.add('loaded');
-                document.removeEventListener('keydown', handleEnter);
-            }
-        }
-
-        typeLines();
-
         const contactBtn = document.getElementById('contact-button');
         contactBtn.addEventListener('click', function () {
             contactBtn.innerText = "ginklejeff@gmail.com";
@@ -503,106 +248,6 @@
         title.addEventListener('click', () => {
             alert("youtube yownloader");
         });
-
-        setInterval(() => {
-            title.textContent = title.textContent === "GINKLEJEFF" ? "G1NKL3J3FF" : "GINKLEJEFF";
-        }, 30000);
-
-        const matrixCanvas = document.getElementById('matrix-overlay');
-        const ctx = matrixCanvas.getContext('2d');
-        function resizeCanvas() {
-            matrixCanvas.width = window.innerWidth;
-            matrixCanvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
-        let drops = [];
-        function startMatrix() {
-            ctx.fillStyle = "rgba(0,0,0,0.05)";
-            ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-            ctx.fillStyle = "#ff00ff";
-            ctx.font = "15px monospace";
-            for (let i = 0; i < drops.length; i++) {
-                let text = letters.charAt(Math.floor(Math.random() * letters.length));
-                ctx.fillText(text, i * 15, drops[i] * 15);
-                if (drops[i] * 15 > matrixCanvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-        for (let x = 0; x < Math.ceil(window.innerWidth / 15); x++) drops[x] = 1;
-        matrixCanvas.classList.add('active');
-        setInterval(startMatrix, 50);
-
-        const cursor = document.getElementById('sandevistan-cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX - 10 + 'px';
-            cursor.style.top = e.clientY - 10 + 'px';
-            const afterimage = document.createElement('div');
-            afterimage.className = 'afterimage';
-            afterimage.style.left = e.clientX - 10 + 'px';
-            afterimage.style.top = e.clientY - 10 + 'px';
-            document.body.appendChild(afterimage);
-            setTimeout(() => afterimage.remove(), 500);
-        });
-
-        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-        let konamiProgress = 0;
-        document.addEventListener('keydown', (e) => {
-            if (e.key === konamiCode[konamiProgress]) {
-                konamiProgress++;
-                if (konamiProgress === konamiCode.length) {
-                    triggerKonamiEffect();
-                    konamiProgress = 0;
-                }
-            } else {
-                konamiProgress = 0;
-            }
-        });
-
-        const particleCanvas = document.getElementById('particle-canvas');
-        const pctx = particleCanvas.getContext('2d');
-        function resizeParticleCanvas() {
-            particleCanvas.width = window.innerWidth;
-            particleCanvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeParticleCanvas);
-        resizeParticleCanvas();
-
-        let particles = [];
-        function triggerKonamiEffect() {
-            particleCanvas.style.display = 'block';
-            particles = [];
-            for (let i = 0; i < 100; i++) {
-                particles.push({
-                    x: window.innerWidth / 2,
-                    y: window.innerHeight / 2,
-                    vx: (Math.random() - 0.5) * 10,
-                    vy: (Math.random() - 0.5) * 10,
-                    size: Math.random() * 5 + 2,
-                    life: 50
-                });
-            }
-            animateParticles();
-            setTimeout(() => particleCanvas.style.display = 'none', 2000);
-        }
-
-        function animateParticles() {
-            pctx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
-            pctx.fillStyle = '#ff4500';
-            particles = particles.filter(p => p.life > 0);
-            particles.forEach(p => {
-                p.x += p.vx;
-                p.y += p.vy;
-                p.life--;
-                pctx.beginPath();
-                pctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                pctx.fill();
-            });
-            if (particles.length > 0) {
-                requestAnimationFrame(animateParticles);
-            }
-        }
     </script>
 </body>
 </html>
