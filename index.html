@@ -6,13 +6,11 @@
     <link rel="icon" href="favicon.png" type="image/png" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Share+Tech+Mono&display=swap');
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         html, body {
             height: 100%;
             background: url('vaporwave.gif') no-repeat center center fixed;
@@ -22,20 +20,17 @@
             color: #ff9bd8;
             position: relative;
         }
-
         body.loaded .container,
         body.loaded .button-bar {
             opacity: 1;
             transform: scale(1);
         }
-
         .container,
         .button-bar {
             opacity: 0;
             transform: scale(1.05);
             transition: opacity 1s ease, transform 1s ease;
         }
-
         .overlay {
             position: fixed;
             top: 0;
@@ -45,26 +40,17 @@
             background: rgba(10, 10, 10, 0.5);
             z-index: 0;
         }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb {
             background: #ff71ce;
             border-radius: 10px;
             box-shadow: 0 0 10px #ff71ce;
         }
-
         ::-webkit-scrollbar-thumb:hover {
             background: #fff685;
             box-shadow: 0 0 10px #fff685;
         }
-
         .container {
             z-index: 1;
             position: relative;
@@ -79,13 +65,11 @@
             gap: 2rem;
             overflow: hidden;
         }
-
         .left-panel {
             flex: 1;
             overflow-y: auto;
             padding-right: 1rem;
         }
-
         .right-panel {
             flex: 0 0 400px;
             height: 100%;
@@ -93,7 +77,6 @@
             flex-direction: column;
             justify-content: center;
         }
-
         h1 {
             font-size: 4rem;
             color: #ff4500;
@@ -102,12 +85,10 @@
             margin-bottom: 1rem;
             cursor: pointer;
         }
-
         h1:hover {
             color: #00ffff;
             text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
         }
-
         h2 {
             font-size: 1.5rem;
             margin-top: 1.5rem;
@@ -115,20 +96,26 @@
             color: #00ffff;
             text-shadow: 0 0 8px #00ffff;
         }
-
         p, a {
             font-size: 1rem;
             margin: 0.4rem 0 1rem 0;
             line-height: 1.3;
         }
-
+        /* Magic class that preserves line breaks but still looks sexy */
+        pre.preserve-breaks {
+            font-family: inherit;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0.4rem 0 1rem 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
         iframe {
             border-radius: 12px;
             width: 100%;
             height: 100%;
             box-shadow: 0 0 20px #ff4500;
         }
-
         .button-bar {
             position: fixed;
             bottom: 0;
@@ -143,7 +130,6 @@
             box-shadow: 0 -2px 10px #ff71ce;
             gap: 15px;
         }
-
         .button-bar a {
             padding: 12px 24px;
             text-decoration: none;
@@ -154,52 +140,14 @@
             display: inline-block;
             user-select: none;
         }
-
-        .button-bar a.github {
-            background: #555;
-            color: black;
-            box-shadow: 0 0 10px #555;
-        }
-
-        .button-bar a.github:hover {
-            background: #777;
-            box-shadow: 0 0 15px #777;
-        }
-
-        .button-bar a.youtube {
-            background: #ff0000;
-            color: white;
-            box-shadow: 0 0 10px #ff0000;
-        }
-
-        .button-bar a.youtube:hover {
-            background: #cc0000;
-            box-shadow: 0 0 15px #cc0000;
-        }
-
-        .button-bar a.hypercube {
-            background: #01cdfe;
-            color: white;
-            box-shadow: 0 0 12px #01cdfe;
-        }
-
-        .button-bar a.hypercube:hover {
-            background: #00b4e6;
-            box-shadow: 0 0 20px #00b4e6;
-        }
-
-        .button-bar a#contact-button {
-            background: #ff1493;
-            color: white;
-            box-shadow: 0 0 12px #ff1493;
-        }
-
-        .button-bar a#contact-button.clicked {
-            background: #c780ff;
-            color: black;
-            box-shadow: 0 0 20px #c780ff;
-        }
-
+        .button-bar a.github { background: #555; color: black; box-shadow: 0 0 10px #555; }
+        .button-bar a.github:hover { background: #777; box-shadow: 0 0 15px #777; }
+        .button-bar a.youtube { background: #ff0000; color: white; box-shadow: 0 0 10px #ff0000; }
+        .button-bar a.youtube:hover { background: #cc0000; box-shadow: 0 0 15px #cc0000; }
+        .button-bar a.hypercube { background: #01cdfe; color: white; box-shadow: 0 0 12px #01cdfe; }
+        .button-bar a.hypercube:hover { background: #00b4e6; box-shadow: 0 0 20px #00b4e6; }
+        .button-bar a#contact-button { background: #ff1493; color: white; box-shadow: 0 0 12px #ff1493; }
+        .button-bar a#contact-button.clicked { background: #c780ff; color: black; box-shadow: 0 0 20px #c780ff; }
         #boot-screen {
             position: fixed;
             top: 0;
@@ -218,7 +166,6 @@
             justify-content: flex-start;
             align-items: flex-start;
         }
-
         #boot-text {
             white-space: pre;
             position: absolute;
@@ -227,7 +174,6 @@
             transform: translate(-50%, -50%);
             text-align: center;
         }
-
         #boot-cursor {
             display: inline-block;
             width: 10px;
@@ -236,7 +182,6 @@
             animation: blink 0.5s infinite;
             vertical-align: middle;
         }
-
         #prompt-text {
             position: absolute;
             bottom: 20px;
@@ -244,16 +189,10 @@
             white-space: pre;
             display: none;
         }
-
         @keyframes blink {
-            0%, 50% {
-                opacity: 1;
-            }
-            51%, 100% {
-                opacity: 0;
-            }
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
         }
-
         #matrix-overlay {
             position: fixed;
             top: 0;
@@ -272,38 +211,61 @@
         <div id="boot-text"></div>
         <div id="prompt-text">WE'VE GOT A CITY TO BURN: <span id="boot-cursor"></span></div>
     </div>
-
     <canvas id="matrix-overlay"></canvas>
-
     <div class="overlay"></div>
 
     <div class="container">
         <div class="left-panel">
             <h1 id="glitch-title">GINKLEJEFF</h1>
-
             <h2 style="color: black; text-shadow: 0 0 5px #ff0000;">𝕷𝖔𝖓𝖌 𝕷𝖎𝖛𝖊 𝕸𝖔𝖙𝖔̈𝖗𝖍𝖊𝖆𝖉</h2>
             <p style="color: black; text-shadow: 0 0 5px #ff0000;">
                 “Apparently people don’t like the truth, but I do like it; I like it because it upsets a lot of people.” - Lemmy Kilmister
             </p>
 
             <h2>Bio</h2>
-            <p>
-                I'm GinkleJeff, an indie game developer/programmer/artist specializing in strategic skillful gameplay and chaotic experiences with a focus on movement. I primarily work in Godot/GDScript, but I make browser games in HTML/CSS/JavaScript as well. Expect kinetic gameplay, glowing visuals, and systems that feed off of skill and momentum. When I'm not making games, I'm eating copious amounts of oranges or making horribly designed missiles in Gmod.
-            </p>
+            <pre class="preserve-breaks">
+I'm GinkleJeff, an indie game developer/programmer/artist who makes games mostly for fun. 
+I primarily work in Godot/GDScript, but I make browser games in HTML/CSS/JavaScript as well. 
+Bands and Media i am currently into include:
+               * Motorhead
+               * Curta'n Wall
+               * Cone Poem
+               * Ween
+               * Limp Bizkit
+               * Old Nick
+               * Evangelion
+               * Borderlands
+               * Dead Cells
+               * Castlevania
+               * Food.net
+            </pre>
 
             <h2>Bloodbath</h2>
-            <p>
-                A first person hack-and-slash game being developed in Godot. You play as Vandred, a lab-grown superhuman mercilessly tearing down demons in a 14 year old's imagination of hell. The combat is fast and frantic; parrying gives back health, and the Bloodblade levels up by absorbing enemy abilities. Think Ultrakill but with Devil May Cry mixed in with some Binding of Isaac or Dead Cells but without roguelike elements—oh, and your lab clone/rival/brother is actively trying to take your arm off.
-            </p>
+            <pre class="preserve-breaks">
+A first person hack-and-slash action game about killing things and absorbing their souls to increase your stats. 
+You play as Vandred, a lab-grown superhuman who was basically supposed to become the standard soldier for humanity, 
+but when they tried bonding you to a hell artifact called the Bloodblade, shit hit the fan. 
+Combat is designed to be fast and frantic; parrying gives back health, and the Bloodblade grants buffs for killing enemies. 
+Think ULTRAKILL merged with Devil May Cry. 
+Oh, and your clone/rival/brother is actively hunting you down.
+            </pre>
 
-            <h2>Chaos Cathedral</h2>
-            <p>
-                A 2D arena roguelike based on ridiculous weaponry, divine decadence and cartoon violence. Choose from a gaggle of weirdos and bless yourself in a holy arena filled with bullet hell bosses and senseless sacrilege. Made in Godot. Explosions are mandatory.
-            </p>
+            <h2>VLADWARE</h2>
+            <pre class="preserve-breaks">
+VLADWARE is a chaotic cyber gothic roguelike where you play as randomly generated clones of cyber-dracula 
+fighting the King’s holy cyber-crusader army. 
+Each run you collect cyberware (like grappling hooks, megalegs, arm guns), weapons, and resistances 
+while powering up the real Dracula. 
+Die three times, your clone is gone, but their upgrades permanently strengthen Dracula. 
+Reach the end, play as fully juiced Dracula, beat the King, 
+and unlock an overpowered Dracula mode for maximum chaos.
+            </pre>
 
             <h2>HyperCube</h2>
             <p>
-                A Javascript browser game located at <a href="https://ginklejeff.github.io/HyperCube" target="_blank" style="color:#01cdfe; text-decoration: underline;">ginklejeff.github.io/HyperCube</a>. You are a cyan-glowing cube who murders enemies by SLAMMING into everyone with speed. It's all about combos, precision matters, and everything glows like an overexposed Frankenstein monitor during a synthwave mixtape.
+                A Javascript browser game located at <a href="https://ginklejeff.github.io/HyperCube" target="_blank" style="color:#01cdfe; text-decoration: underline;">ginklejeff.github.io/HyperCube</a>. 
+                You are a cyan-glowing cube who murders enemies by slamming into them. It's all about combos, speed, and shapes, 
+                oh, and everything glows like an overexposed Frankenstein monitor in a synthwave mixtape.
             </p>
         </div>
 
@@ -332,7 +294,7 @@
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠀⠀⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⢀⠁⠀⢀⣰⣿⣿⡿⠆⠈⠀⣰⣷⡄⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠘⢿⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⡾⣧⡜⠀⣠⣿⣿⣿⣿⡿⠋⣹⣿⣿⣿⠟⢸⣿⣦⣴⣿⣿⣿⡿⠁⠀⠀⣾⣿⣿⠁⠀⠀⠀⠀
 ⠀⠀⠀⠀⢀⠀⠀⢹⣿⣧⠀⠀⠀⠀⡀⢀⣾⢀⣿⣿⣿⣾⣿⣿⣿⣿⠛⠁⢠⠿⠟⠉⠁⠀⢸⣹⣿⣿⠛⠻⣯⠁⠀⠀⣀⣿⠿⠁⠀⠀⠀⣆⢹
-⠀⠀⠰⣄⠸⣷⡄⠀⢿⣟⠀⠀⠀⠀⣷⡀⣇⠀⣿⣿⠿⣿⠛⣿⠏⠀⠀⡄⠀⢀⣴⡾⠁⠀⣼⣿⡿⠏⠀⠐⣿⡄⠀⣰⠋⠀⠀⣺⠀⠀⠀⢹⣘
+⠀⠀⠰⣄⠸⣷⡄⠀⢿⣟⠀⠀⠀⠀⣷⡀⣇⠀⣿⣿⠿⣿⠛⣿⠏⠀⠀⡄⠀⢀⣴⡾⠁⠀⣼⣿⡿⠏⠀⠐⣿⡄⠀⣰⠋⠀⠀⣺⠀⠀⠀⢸⣘
 ⠀⠀⠠⣽⣶⡿⠇⠀⠀⢉⠀⠶⠒⠀⠘⢷⣿⣥⠈⠿⠀⠘⢆⠘⠀⢠⣿⡁⠀⣾⣿⠃⠀⣸⢿⣿⣇⣀⠀⢀⣿⡇⠀⡘⠀⠀⠸⣿⠀⠀⠀⢸⠁
 ⠀⠀⠀⠘⠋⢀⠀⣄⠀⣆⠁⣾⣿⣧⠀⠘⣿⣿⣦⢸⣦⠀⠈⣤⣼⣿⣿⣿⣾⡿⠁⠀⠈⣠⣾⣿⣿⣿⣿⣿⣿⡇⢀⣧⠀⠲⣀⣿⡆⠀⠐⠀⠀
 ⠀⠀⠀⠀⡶⢠⣾⡿⠷⠿⢷⣿⣿⣿⠇⠀⠋⢹⣿⣶⣿⣷⣶⣿⣿⣿⠋⠉⣿⠃⠀⢀⣾⣿⣿⣿⣿⡿⠻⠙⠿⡇⠈⣿⠁⠀⣿⠏⠀⠀⠀⠀⠀
@@ -367,7 +329,6 @@
         ];
 
         const bootText = document.getElementById('boot-text');
-        const bootCursor = document.getElementById('boot-cursor');
         const promptText = document.getElementById('prompt-text');
         let lineIndex = 0;
 
@@ -433,17 +394,16 @@
 
         typeLines();
 
-        const contactBtn = document.getElementById('contact-button');
-        contactBtn.addEventListener('click', function () {
-            contactBtn.innerText = "ginklejeff@gmail.com";
-            contactBtn.classList.add("clicked");
+        document.getElementById('contact-button').addEventListener('click', function () {
+            this.innerText = "ginklejeff@gmail.com";
+            this.classList.add("clicked");
         });
 
-        const title = document.getElementById('glitch-title');
-        title.addEventListener('click', () => {
+        document.getElementById('glitch-title').addEventListener('click', () => {
             alert("youtube yownloader");
         });
 
+        // Matrix rain (unchanged, still beautiful)
         const matrixCanvas = document.getElementById('matrix-overlay');
         const ctx = matrixCanvas.getContext('2d');
         function resizeCanvas() {
@@ -452,8 +412,11 @@
         }
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
+
         const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
         let drops = [];
+        for (let x = 0; x < Math.ceil(window.innerWidth / 15); x++) drops[x] = 1;
+
         function startMatrix() {
             ctx.fillStyle = "rgba(0,0,0,0.05)";
             ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
@@ -466,12 +429,7 @@
                 drops[i]++;
             }
         }
-        for (let x = 0; x < Math.ceil(window.innerWidth / 15); x++) drops[x] = 1;
-        matrixCanvas.classList.add('active');
         setInterval(startMatrix, 50);
     </script>
 </body>
 </html>
-
-
-
